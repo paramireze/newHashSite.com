@@ -1,5 +1,8 @@
 <?php
-include '../config.php';
+include '../testConfig.php';
+include SITE_ROOT . '/db/user.php';
+include SITE_ROOT . '/db/bootstrap.php';
+include SITE_ROOT . '/db/function.php';
 include SITE_ROOT . '/function/common.php';
 ?>
 <!doctype html>
