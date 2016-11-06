@@ -15,8 +15,8 @@ include SITE_ROOT . '/function/common.php';
     <meta name="description" content="Drinking Club With a Running Problem">
     <meta name="author" content="Nummy">
 
-    <link rel="stylesheet" href="">
-
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
     <![endif]-->
@@ -24,26 +24,9 @@ include SITE_ROOT . '/function/common.php';
 
 <body><?php
 
-include($_SERVER['DOCUMENT_ROOT'] . '/' . $page_content);
+    include $_SERVER['DOCUMENT_ROOT'] . '/layout/inc_notification.php';
+    include $_SERVER['DOCUMENT_ROOT'] . '/' . $page_content;
+    include $_SERVER['DOCUMENT_ROOT'] . '/layout/inc_dataDump.php'; ?>
 
-
-if (!isProduction()) {
-
-    echo '<h1>Session</h1>
-          <pre>';
-    print_r($_SESSION);
-    echo '</pre>';
-    echo '<h1>Request</h1>
-          <pre>';
-    print_r($_REQUEST);
-    echo '</pre>';
-
-    echo '<h1>Server</h1>
-          <pre>';
-    print_r($_SERVER);
-    echo '</pre>';
-
-}
-?>
 </body>
 </html>
