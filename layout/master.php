@@ -4,6 +4,11 @@ include SITE_ROOT . '/db/user.php';
 include SITE_ROOT . '/db/bootstrap.php';
 include SITE_ROOT . '/db/function.php';
 include SITE_ROOT . '/function/common.php';
+
+function __autoload($class_name) {
+    require_once "./class/class.".$class_name.".php";
+}
+
 ?>
 <!doctype html>
 
