@@ -16,4 +16,8 @@ function getUserByName($firstName, $lastName) {
     return $result->fetch();
 }
 
+function createUser($user) {
+    return create_user($user);
+}
+
 ?>

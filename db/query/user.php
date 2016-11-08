@@ -29,14 +29,14 @@ function get_user_by_name($firstName, $lastName) {
     return do_pdo_query($databaseConnection, $sql['query'], $sql['params']);
 }
 
-function addUsers($user) {
+function create_user($user) {
     $databaseConnection = dbConnection();
-    $sql['query'] = "insert into user values (default, ':firstName', ':lastName', ':hashName', ':email')";
+    $sql['query'] = "insert into user (id, firstName, lastName, hashName, email) values (default, :firstName, :lastName, :hashName, :email)";
     $sql['params'][':firstName']    = $user->firstName;
     $sql['params'][':lastName']     = $user->lastName;
     $sql['params'][':hashName']     = $user->hashName;
     $sql['params'][':email']        = $user->email;
-    return do_pdo_query($databaseConnection, $sql, null);
+    return do_pdo_query($databaseConnection, $sql['query'], $sql['params']);
 }
 
 

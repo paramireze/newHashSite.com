@@ -6,20 +6,15 @@
 $people = populatePeople();
 
 foreach ($people as $person) {
-    //$user = getUserByName($person->getFirstName, $person->getLastName);
 
-    echo "<div> first and last: " . $person->firstName . " " . $person->lastName . "</div>";
-    echo '<pre>';
-    print_r($person);
-    echo '</pre>';
+    $dbPerson = getUserByName($person->firstName, $person->lastName);
 
-    /*if (!$user) {
-        //insert user
-        echo "<div>no match for $person->getFirstName</div>";
-    } else {
-        echo "<div>HIT! " $person->getFirstName</div>";
-
-    }*/
+    if (!getUserByName($person->firstName, $person->lastName)) {
+        $result = createUser($person);
+        if (!$result) {
+            die('bad insert');
+        }
+    } 
 }
 
 $hashEvent1 = new Event($nummy, "Nummy's hash Run", "Aug 5th, 2016", "it will be great!");
