@@ -1,6 +1,6 @@
 <?php
 
-function getUsers() {
+function get_users() {
 
     $databaseConnection = dbConnection();
 
@@ -10,12 +10,22 @@ function getUsers() {
     return do_pdo_query($databaseConnection, $sql['query'], $sql['params']);
 }
 
-function getUser($userId) {
+function get_user($id) {
     $databaseConnection = dbConnection();
 
-    $sql['query'] = "SELECT * FROM user";
+    $sql['query'] = "SELECT * FROM user where id = :id";
 
-    $sql['params'] = null;
+    $sql['params'][':id'] = $id;
+    return do_pdo_query($databaseConnection, $sql['query'], $sql['params']);
+}
+
+function get_user_by_name($firstName, $lastName) {
+    $databaseConnection = dbConnection();
+
+    $sql['query'] = "SELECT * FROM user where firstName = :firstName and lastName = :lastName";
+
+    $sql['params'][':firstName'] = $firstName;
+    $sql['params'][':lastName'] = $lastName;
     return do_pdo_query($databaseConnection, $sql['query'], $sql['params']);
 }
 
