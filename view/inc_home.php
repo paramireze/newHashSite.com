@@ -2,13 +2,14 @@
 <div>let me know if I can help in anyway</div>
 <?php
 //buildDB();
-//$users = getUsers();
+$users = getUsers();
+
 
 
 
 
 $nummy = new User(1, 'nummy', 'paul', 'ramirez');
-$fedora = new User(2, 'fedora', 'trisha', 'casey');
+$fedora = new User(2, 'zerimar', 'bryan', 'ramirez');
 $steamingDogVomit = new User(3, 'steaming dog vomit', 'jack', 'philiac');
 
 $hashEvent1 = new Event($nummy, "Nummy's hash Run", "Aug 5th, 2016", "it will be great!");

@@ -9,8 +9,6 @@
   PRIMARY KEY (`id`),
   UNIQUE INDEX `email_UNIQUE` (`email` ASC));
 
- client ID: 127178184606-vbfpqj3hh6lu44o7dgcu62cdecgve36t.apps.googleusercontent.com
- client secret: gHgPYixQYZcqv5s3ao26z0EV
  */
 
 
@@ -30,6 +28,45 @@ function dbConnection() {
     }
     return $dbh;
 
-} ?>
+}
+
+if (!function_exists('do_pdo_query')) {
+    function do_pdo_query($db, $query, $query_params = NULL) {
+        // no query parameters
+        if (empty($query_params)) {
+            $stmt = $db->query($query);
+            if (!$stmt) {
+                $log_msg = 'problem executing query "' . $query . '".';
+                r_error($log_msg, 'database error');
+            }
+        }
+        // parameterized query
+        else {
+            try {
+                $stmt = $db->prepare($query);
+                if ($stmt == NULL) {
+                    r_error('couldn\'t prepare query: ' . $query,'');
+                }
+                foreach ($query_params as $key => $value) {
+                    $stmt->bindValue($key, $value);
+                }
+                $result = $stmt->execute();
+            }
+            catch (Exception $e) {
+                $log_msg = 'problem executing query "' . $query . '": ' . $e->getMessage();
+                r_error($log_msg, 'database error');
+            }
+            if (!$result) {
+                $log_msg = 'problem executing query "' . $query . '" with paramater set: ' . print_r($query_params, TRUE);
+                r_error($log_msg, 'database error');
+            }
+        }
+
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        return $stmt;
+    }
+}
+
+?>
 
 
