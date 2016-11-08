@@ -11,11 +11,11 @@
           UNIQUE INDEX `email_UNIQUE` (`email` ASC));
  */
 class User {
-    protected $id;
-    protected $hashName;
-    protected $firstName;
-    protected $lastName;
-    protected $email;
+    protected $id; // do not allow user to set this property - only get
+    public $hashName;
+    public $firstName;
+    public $lastName;
+    public $email;
 
     public function __construct($hashName, $firstName, $lastName, $email) {
         $this->hashName = $hashName;
@@ -25,29 +25,8 @@ class User {
 
     }
 
-    public function getHashName() {
-        return $this->hashName;
-    }
-
-    public function getEmail() {
-        return $this->email;
-    }
-
-    public function getFirstName() {
-        return $this->firstName;
-    }
-
-    public function getLastName() {
-        return $this->hashName;
-    }
-
-
     public function getId() {
         return $this->id;
-    }
-
-    public function setHashName($hashName) {
-        $this->name = $hashName;
     }
 }
 

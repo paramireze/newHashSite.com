@@ -12,7 +12,8 @@ function getUser($id) {
 }
 
 function getUserByName($firstName, $lastName) {
-    return get_user_by_name($firstName, $lastName);
+    $result = get_user_by_name($firstName, $lastName);
+    return $result->fetch();
 }
 
 ?>
