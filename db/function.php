@@ -34,10 +34,10 @@ if (!function_exists('do_pdo_query')) {
     function do_pdo_query($db, $query, $query_params = NULL) {
         // no query parameters
         if (empty($query_params)) {
-            $stmt = $db->query($query);
+            $stmt = $db->query($query); 
             if (!$stmt) {
                 $log_msg = 'problem executing query "' . $query . '".';
-                r_error($log_msg, 'database error');
+                die('database error');
             }
         }
         // parameterized query
@@ -45,7 +45,7 @@ if (!function_exists('do_pdo_query')) {
             try {
                 $stmt = $db->prepare($query);
                 if ($stmt == NULL) {
-                    r_error('couldn\'t prepare query: ' . $query,'');
+                    die('couldn\'t prepare query: ' . $query);
                 }
                 foreach ($query_params as $key => $value) {
                     $stmt->bindValue($key, $value);
@@ -54,15 +54,15 @@ if (!function_exists('do_pdo_query')) {
             }
             catch (Exception $e) {
                 $log_msg = 'problem executing query "' . $query . '": ' . $e->getMessage();
-                r_error($log_msg, 'database error');
+                die( 'database error');
             }
             if (!$result) {
                 $log_msg = 'problem executing query "' . $query . '" with paramater set: ' . print_r($query_params, TRUE);
-                r_error($log_msg, 'database error');
+                die('database error');
             }
         }
 
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $stmt->setFetchMode(PDO::FETCH_OBJ);
         return $stmt;
     }
 }

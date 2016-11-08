@@ -5,6 +5,7 @@ include '../testConfig.php';
 
 // get the db connection and functions
 include SITE_ROOT . '/db/function.php';
+include SITE_ROOT . '/db/user.php';
 
 // site wide functions
 include SITE_ROOT . '/function/common.php';

@@ -3,15 +3,32 @@
 <?php
 //buildDB();
 $users = getUsers();
+echo '<pre>';
+ print_r($users->fetchAll());
+echo '</pre>';
 
 
 
 
 
-$nummy = new User(1, 'nummy', 'paul', 'ramirez');
-$fedora = new User(2, 'zerimar', 'bryan', 'ramirez');
-$steamingDogVomit = new User(3, 'steaming dog vomit', 'jack', 'philiac');
+$nummy = new User('nummy', 'paul', 'ramirez', 'email@email.com');
 
+$fedora = new User('zerimar', 'bryan', 'ramirez', 'email@another.com');
+$sdv = new User('steaming dog vomit', 'jack', 'philiac', 'email@third.com');
+$people = array($nummy, $fedora, $sdv);
+
+foreach ($people as $person) {
+    foreach ($users as $user) {
+        if ($person->getHashName == $user->getHashName) {
+            echo '<div>hit</div>';
+        } else {
+            echo '<div>miss</div>';
+        }
+    }
+}
+
+
+die();
 $hashEvent1 = new Event($nummy, "Nummy's hash Run", "Aug 5th, 2016", "it will be great!");
 
 echo '<pre>';
