@@ -15,9 +15,9 @@
 
 
 function dbConnection() {
-    $hostname = $_SESSION['dbHostName'];
-    $username = $_SESSION['dbUserName'];
-    $password = $_SESSION['dbPassword'];
+    $hostname = dbHostName;
+    $username = dbUserName;
+    $password = dbPassword;
     try {
         $dbh = new PDO("mysql:host=$hostname;dbname=test_madisonh3_com",$username,$password);
 

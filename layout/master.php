@@ -1,10 +1,17 @@
 <?php
+
+// config file declaring doc site_root and other stuff
 include '../testConfig.php';
+
+// get the db connection and functions
 include SITE_ROOT . '/db/user.php';
 include SITE_ROOT . '/db/bootstrap.php';
 include SITE_ROOT . '/db/function.php';
+
+// site wide functionss
 include SITE_ROOT . '/function/common.php';
 
+// makes including classes much easier
 function __autoload($class_name) {
     require_once "./class/class.".$class_name.".php";
 }
@@ -29,9 +36,9 @@ function __autoload($class_name) {
 
 <body><?php
 
-    include $_SERVER['DOCUMENT_ROOT'] . '/layout/inc_notification.php';
-    include $_SERVER['DOCUMENT_ROOT'] . '/' . $page_content;
-    include $_SERVER['DOCUMENT_ROOT'] . '/layout/inc_dataDump.php'; ?>
+    include SITE_ROOT . '/layout/inc_notification.php';
+    include SITE_ROOT . '/' . $page_content;
+    include SITE_ROOT . '/layout/inc_dataDump.php'; ?>
 
 </body>
 </html>
