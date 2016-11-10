@@ -55,17 +55,6 @@ if (!function_exists('do_pdo_query')) {
     }
 }
 
-function doesTableExists($table = 'user') {
-    $databaseConnection = dbConnection();
-
-    $sql['query'] = "SHOW TABLES LIKE '" . $table . "'";
-    $sql['params'] = null;
-    $result = do_pdo_query($databaseConnection, $sql['query'], $sql['params']);
-
-    return $result->rowCount() == 1 ? true : false;
-}
-
-
 
 
 ?>

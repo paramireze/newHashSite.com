@@ -1,8 +1,8 @@
 <?php
 function rebuildDB() {
-    dropTable();
-    //buildDB();
-    //addUsers();
+    //dropTable();
+    buildDB();
+    addUsers();
 }
 
 function dropTable() {
@@ -16,8 +16,8 @@ function buildDB() {
     $sql = "
          CREATE TABLE IF NOT EXISTS `test_madisonh3_com`.`user` (
           `id` INT NOT NULL AUTO_INCREMENT,
-          `first` VARCHAR(45) NULL,
-          `last` VARCHAR(45) NULL,
+          `firstName` VARCHAR(45) NULL,
+          `lastName` VARCHAR(45) NULL,
           `email` VARCHAR(45) NULL,
           `hashName` VARCHAR(45) NULL,
           PRIMARY KEY (`id`),
@@ -27,12 +27,20 @@ function buildDB() {
     do_pdo_query($databaseConnection, $sql, null);
 }
 
-function addUser() {
-    $databaseConnection = dbConnection();
-    $sql = "INSERT IGNORE INTO `test_madisonh3_com`.`user`
-            SET `ensembl_transcript_id` = ‘ENSORGT00000000001′,
-              `transcript_chrom_start` = 12345,
-              `transcript_chrom_end` = 12678";
+function addUsers() {
+
+    $people = populatePeople();
+
+    addPeopleToDB($people);
+
 }
+
+function populatePeople() {
+    $nummy  = new User('nummy', 'paul', 'ramirez', 'email@email.com');
+    $fedora = new User('zerimar', 'bryan', 'ramirez', 'email@another.com');
+    $sdv    = new User('steaming dog vomit', 'jack', 'philiac', 'email@third.com');
+    return array($nummy, $fedora, $sdv);
+}
+
 
 ?>

@@ -20,12 +20,16 @@ function createUser($user) {
     return create_user($user);
 }
 
-function createUserTableIfDoesNotExist() {
-    $result = null;
-    if (!doesTableExists('user')) {
-        create_user_table();
-
+function addPeopleToDB($people) {
+    foreach ($people as $person) {
+        if (!getUserByName($person->firstName, $person->lastName)) {
+            $result = createUser($person);
+            if (!$result) {
+                die('bad insert');
+            }
+        }
     }
 }
 
+ß
 ?>
