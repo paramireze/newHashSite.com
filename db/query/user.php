@@ -1,11 +1,24 @@
 <?php
 
-function get_users() {
+function create_user_table() {
+    $databaseConnection = dbConnection();
 
+    $sql['query'] = "CREATE TABLE `test_madisonh3_com`.`user` (
+          `id` INT NOT NULL AUTO_INCREMENT,
+          `firstName` VARCHAR(45) NULL,
+          `lastName` VARCHAR(45) NULL,
+          `email` VARCHAR(45) NULL,
+          `hashName` VARCHAR(45) NULL,
+          PRIMARY KEY (`id`),
+          UNIQUE INDEX `email_UNIQUE` (`email` ASC));";
+    $sql['params'] = null;
+    return do_pdo_query($databaseConnection, $sql['query'], $sql['params']);
+}
+
+function get_users() {
     $databaseConnection = dbConnection();
 
     $sql['query'] = "SELECT * FROM user";
-
     $sql['params'] = null;
     return do_pdo_query($databaseConnection, $sql['query'], $sql['params']);
 }
@@ -38,6 +51,5 @@ function create_user($user) {
     $sql['params'][':email']        = $user->email;
     return do_pdo_query($databaseConnection, $sql['query'], $sql['params']);
 }
-
 
 ?>

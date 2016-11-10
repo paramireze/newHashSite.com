@@ -3,19 +3,13 @@
 <?php
 
 
+$result = createUserTable();
+echo '<pre>';
+print_r($result);
+echo '</pre>';
 $people = populatePeople();
 
-foreach ($people as $person) {
-
-    $dbPerson = getUserByName($person->firstName, $person->lastName);
-
-    if (!getUserByName($person->firstName, $person->lastName)) {
-        $result = createUser($person);
-        if (!$result) {
-            die('bad insert');
-        }
-    } 
-}
+addPeopleToDB($people);
 
 $hashEvent1 = new Event($nummy, "Nummy's hash Run", "Aug 5th, 2016", "it will be great!");
 

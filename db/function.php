@@ -1,16 +1,4 @@
 <?php
-/*
- CREATE TABLE `test_madisonh3_com`.`user` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `first` VARCHAR(45) NULL,
-  `last` VARCHAR(45) NULL,
-  `email` VARCHAR(45) NULL,
-  `hashName` VARCHAR(45) NULL
-  PRIMARY KEY (`id`),
-  UNIQUE INDEX `email_UNIQUE` (`email` ASC));
-
- */
-
 
 function dbConnection() {
     $hostname = dbHostName;
@@ -66,6 +54,28 @@ if (!function_exists('do_pdo_query')) {
         return $stmt;
     }
 }
+
+function createUserTableIfNotExists() {
+    $result = null;
+    if (!doesTableExists('user')) {
+        $dbResult = createUserTable();
+        $result = !empty($dbResult->fetch());
+    }
+    return $result;
+}
+
+function doesTableExists($table = 'user') {
+    $databaseConnection = dbConnection();
+
+    $sql['query'] = "SHOW TABLES LIKE '" . $table . "'";
+    $sql['params'] = null;
+    $result = do_pdo_query($databaseConnection, $sql['query'], $sql['params']);
+
+    return $result->rowCount() == 1 ? true : false;
+}
+
+
+
 
 ?>
 

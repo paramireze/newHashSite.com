@@ -14,6 +14,21 @@ function populatePeople() {
     return array($nummy, $fedora, $sdv);
 }
 
+function addPeopleToDB($people) {
+
+    $people = populatePeople();
+
+    foreach ($people as $person) {
+        if (!getUserByName($person->firstName, $person->lastName)) {
+            $result = createUser($person);
+            if (!$result) {
+                die('bad insert');
+            }
+        }
+    }
+    
+}
+
 spl_autoload_register('MyAutoload');
 
 ?>
