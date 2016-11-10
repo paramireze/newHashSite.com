@@ -55,15 +55,6 @@ if (!function_exists('do_pdo_query')) {
     }
 }
 
-function createUserTableIfNotExists() {
-    $result = null;
-    if (!doesTableExists('user')) {
-        $dbResult = createUserTable();
-        $result = !empty($dbResult->fetch());
-    }
-    return $result;
-}
-
 function doesTableExists($table = 'user') {
     $databaseConnection = dbConnection();
 

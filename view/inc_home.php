@@ -3,10 +3,8 @@
 <?php
 
 
-$result = createUserTable();
-echo '<pre>';
-print_r($result);
-echo '</pre>';
+createUserTableIfDoesNotExist();
+
 $people = populatePeople();
 
 addPeopleToDB($people);

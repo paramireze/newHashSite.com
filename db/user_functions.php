@@ -20,16 +20,12 @@ function createUser($user) {
     return create_user($user);
 }
 
-function createUserTable() {
+function createUserTableIfDoesNotExist() {
     $result = null;
     if (!doesTableExists('user')) {
-        $result = create_user_table();
-        echo '<pre>';
-        print_r($result);
-        echo '</pre>';
-    }
+        create_user_table();
 
-    return $result;
+    }
 }
 
 ?>
