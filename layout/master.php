@@ -1,6 +1,6 @@
 <?php
 
-// config file declaring doc site_root and other stuff
+// config file declaring doc environmental variables and db connection info
 include '../testConfig.php';
 
 // get the db connection and functions

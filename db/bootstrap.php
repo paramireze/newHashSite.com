@@ -21,8 +21,7 @@ function buildDB() {
           `email` VARCHAR(45) NULL,
           `hashName` VARCHAR(45) NULL,
           PRIMARY KEY (`id`),
-          UNIQUE INDEX `email_UNIQUE` (`email` ASC));
-    ";
+          UNIQUE INDEX `email_UNIQUE` (`email` ASC));";
 
     do_pdo_query($databaseConnection, $sql, null);
 }
