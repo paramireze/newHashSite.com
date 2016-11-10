@@ -10,7 +10,6 @@ function create_activity_log_table() {
           PRIMARY KEY (`id`));";
 
     do_pdo_query($databaseConnection, $sql, null);
-
 }
 
 ?>

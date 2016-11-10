@@ -1,5 +1,8 @@
 <?php
 
+/*
+ *
+ */
 function get_users() {
     $databaseConnection = dbConnection();
 
@@ -8,6 +11,9 @@ function get_users() {
     return do_pdo_query($databaseConnection, $sql['query'], $sql['params']);
 }
 
+/*
+ *
+ */
 function get_user($id) {
     $databaseConnection = dbConnection();
 
@@ -17,6 +23,9 @@ function get_user($id) {
     return do_pdo_query($databaseConnection, $sql['query'], $sql['params']);
 }
 
+/*
+ *
+ */
 function get_user_by_name($firstName, $lastName) {
     $databaseConnection = dbConnection();
 
@@ -27,6 +36,9 @@ function get_user_by_name($firstName, $lastName) {
     return do_pdo_query($databaseConnection, $sql['query'], $sql['params']);
 }
 
+/*
+ *
+ */
 function create_user($user) {
     $databaseConnection = dbConnection();
     $sql['query'] = "insert into user (id, firstName, lastName, hashName, email) values (default, :firstName, :lastName, :hashName, :email)";
@@ -37,6 +49,9 @@ function create_user($user) {
     return do_pdo_query($databaseConnection, $sql['query'], $sql['params']);
 }
 
+/*
+ * 
+ */
 function create_user_table() {
     $databaseConnection = dbConnection();
     $sql = "
