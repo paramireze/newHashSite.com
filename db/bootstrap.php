@@ -1,7 +1,8 @@
 <?php
 function rebuildDB() {
     //dropTable();
-    buildDB();
+    buildActivityLogDB();
+    buildUserDB();
     addUsers();
 }
 
@@ -11,19 +12,13 @@ function dropTable() {
     do_pdo_query($databaseConnection, $sql, null);
 }
 
-function buildDB() {
-    $databaseConnection = dbConnection();
-    $sql = "
-         CREATE TABLE IF NOT EXISTS `test_madisonh3_com`.`user` (
-          `id` INT NOT NULL AUTO_INCREMENT,
-          `firstName` VARCHAR(45) NULL,
-          `lastName` VARCHAR(45) NULL,
-          `email` VARCHAR(45) NULL,
-          `hashName` VARCHAR(45) NULL,
-          PRIMARY KEY (`id`),
-          UNIQUE INDEX `email_UNIQUE` (`email` ASC));";
+function buildActivityLogDB() {
+    createActivityLogTable();
+}
 
-    do_pdo_query($databaseConnection, $sql, null);
+
+function buildUserDB() {
+    createUserTable();
 }
 
 function addUsers() {
