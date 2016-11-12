@@ -2,6 +2,7 @@
 function rebuildDB() {
     //dropTable();
     buildActivityLogDB();
+    
     buildUserDB();
     addUsers();
 }

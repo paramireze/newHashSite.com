@@ -10,7 +10,7 @@ include SITE_ROOT . '/db/activity_log_functions.php';
 
 // site wide functions
 include SITE_ROOT . '/function/common.php';
-
+$_SESSION['user'] = 'nummy';
 ?>
 <!doctype html>
 
