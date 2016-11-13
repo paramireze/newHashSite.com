@@ -8,7 +8,7 @@ function create_table_database_logs() {
           `id` INT NOT NULL AUTO_INCREMENT,
           `created` TIMESTAMP,
           `createdBy` VARCHAR(50),
-          `notes` VARCHAR(500) NULL,
+          `note` VARCHAR(500) NULL,
           `url` VARCHAR(100),
           `sql` VARCHAR(300),
           `params` VARCHAR(500) NULL,
@@ -31,16 +31,19 @@ function check_table_exists($table) {
 function get_all_database_logs() {
     $databaseConnection = dbConnection();
 
-    $sql['query'] = "SELECT * FROM log_database order by id desc";
+    $sql['query'] = "SELECT * FROM database_logs order by id desc";
     $sql['params'] = null;
     return do_pdo_query($databaseConnection, $sql['query'], $sql['params']);
 }
 
 function insert_database_log(DatabaseLog $databaseLog) {
+    echo '<pre>';
+    print_r($databaseLog);
+    echo '</pre>';
     $databaseConnection = dbConnection();
 
-    $sql['query'] = "INSERT INTO database_logs (id, created, createdBy, note, url, sql, params, server, rowsAffected) 
-                        VALUE (default,                          
+    $sql['query'] = "INSERT INTO database_logs (id, created, createdBy, note, url, `sql`, params, server, rowsAffected) 
+                        VALUES (default,                          
                         :created, 
                         :createdBy, 
                         :note, 
@@ -48,13 +51,14 @@ function insert_database_log(DatabaseLog $databaseLog) {
                         :sql,
                         :params,
                         :server,
-                        :rowsAffected')";
+                        :rowsAffected);";
     $sql['params'][":note"]         = $databaseLog->note;
     $sql['params'][":created"]      = $databaseLog->created;
     $sql['params'][":createdBy"]    = $databaseLog->createdBy;
     $sql['params'][":url"]          = $databaseLog->url;
-    $sql['params'][":server"]       = $databaseLog->server;
+    $sql['params'][":sql"]          = $databaseLog->sql;
     $sql['params'][":params"]       = $databaseLog->params;
+    $sql['params'][":server"]       = $databaseLog->server;
     $sql['params'][":rowsAffected"] = $databaseLog->rowsAffected;
 
 

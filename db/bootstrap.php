@@ -1,13 +1,14 @@
 <?php
 function rebuildDB() {
     //dropTable();
-    createDatabaseLogsTable();
+    createDatabaseLogTable();
     if (isTableCreated('database_logs')) {
+        echo '<div>added db log table</div>';
         addDatabaseLogs();
     }
 
     createUserTable();
-    if (isTableCreated('log_database')) {
+    if (isTableCreated('database_logs')) {
         addUsers();
     }
 
@@ -15,10 +16,12 @@ function rebuildDB() {
 
 function addDatabaseLogs() {
     //$note, $sql, $params, $rowsAffected
-    $databaseLog = new DatabaseLog($note, $sql, $params, $rowsAffected);
-
+    $databaseLog1 = new DatabaseLog('this is an insert or someting', 'create stuff from stuff', 'id:1,sql:stuff', '2');
+    $databaseLog2 = new DatabaseLog('this is an insert or someting else', 'create more from stuff', 'id:2,sql:stuff', '4');
+    $databaseLogs = array($databaseLog1, $databaseLog2);
+    insertDatabaseLogs($databaseLogs);
 }
-
+    
 function dropTable() {
     $databaseConnection = dbConnection();
     $sql = "drop table user;";

@@ -2,10 +2,9 @@
 include SITE_ROOT . '/db/query/database_log.php';
 
 function createDatabaseLogTable() {
-    $result = create_table_database_logs();
-    echo '<pre>';
-    print_r($result);
-    echo '</pre>';
+    echo '<div>hit</div>';
+    return create_table_database_logs();
+
 }
 
 function isTableCreated($table) {
@@ -23,8 +22,20 @@ function getAllDatabaseLogs() {
 
 }
 
+function insertDatabaseLogs($logs) {
+    foreach ($logs as $log) {
+        $result = insertDatabaseLog($log);
+        echo '<div>another hit</div>';
+        if (!$result) {
+            die('bad insert');
+        }
+    }
+}
+
+
 function insertDatabaseLog($databaseLog) {
-    $result = insert_database_log($databaseLog);
+    return insert_database_log($databaseLog);
+
 }
 
 ?>

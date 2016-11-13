@@ -34,6 +34,4 @@ function addPeopleToDB($people) {
         }
     }
 }
-
-ß
 ?>
