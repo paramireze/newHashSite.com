@@ -1,10 +1,22 @@
 <?php
 function rebuildDB() {
     //dropTable();
-    buildActivityLogDB();
-    
-    buildUserDB();
-    addUsers();
+    createDatabaseLogsTable();
+    if (isTableCreated('database_logs')) {
+        addDatabaseLogs();
+    }
+
+    createUserTable();
+    if (isTableCreated('log_database')) {
+        addUsers();
+    }
+
+}
+
+function addDatabaseLogs() {
+    //$note, $sql, $params, $rowsAffected
+    $databaseLog = new DatabaseLog($note, $sql, $params, $rowsAffected);
+
 }
 
 function dropTable() {
@@ -13,14 +25,6 @@ function dropTable() {
     do_pdo_query($databaseConnection, $sql, null);
 }
 
-function buildActivityLogDB() {
-    createActivityLogTable();
-}
-
-
-function buildUserDB() {
-    createUserTable();
-}
 
 function addUsers() {
 

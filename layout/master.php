@@ -6,11 +6,11 @@ include '../testConfig.php';
 // get the db connection and functions
 include SITE_ROOT . '/db/function.php';
 include SITE_ROOT . '/db/user_functions.php';
-include SITE_ROOT . '/db/activity_log_functions.php';
+include SITE_ROOT . '/db/database_logs_functions.php';
 
 // site wide functions
 include SITE_ROOT . '/function/common.php';
-$_SESSION['user'] = 'nummy';
+setUser();
 ?>
 <!doctype html>
 
