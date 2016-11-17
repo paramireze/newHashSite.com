@@ -19,17 +19,7 @@ class Log {
     }
 }
 
-/*
-           `id` INT NOT NULL AUTO_INCREMENT,
-          `created` TIMESTAMP,
-          `createdBy` VARCHAR(50),
-          `note` VARCHAR(500) NULL,
-          `url` VARCHAR(100),
-          `sql` VARCHAR(300),
-          `server` VARCHAR(300) NULL,
-          `params` VARCHAR(500) NULL,
-          `rowsAffected` VARCHAR(10) NULL,
- */
+
 class DatabaseLog extends Log {
     public $note;
     public $sql;
