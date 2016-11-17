@@ -25,7 +25,7 @@ function getAllDatabaseLogs() {
 function insertDatabaseLogs($logs) {
     foreach ($logs as $log) {
         $result = insertDatabaseLog($log);
-        echo '<div>another hit</div>';
+
         if (!$result) {
             die('bad insert');
         }
