@@ -22,16 +22,17 @@ if (!function_exists('do_pdo_query')) {
     function do_pdo_query($db, $query, $query_params = NULL) {
 
         $dbLog = startLog($query, $query_params);
-        // no query parameters
+        if (!empty($dbLog)) {
+            dumpData($dbLog);
+        }
+
         if (empty($query_params)) {
             $stmt = $db->query($query); 
             if (!$stmt) {
                 $log_msg = 'problem executing query "' . $query . '".';
                 die($log_msg);
             }
-        }
-        // parameterized query
-        else {
+        } else {
             try {
                 $stmt = $db->prepare($query);
                 if ($stmt == NULL) {
@@ -53,7 +54,7 @@ if (!function_exists('do_pdo_query')) {
             }
         }
 
-        $result = insertDatabaseLog($dbLog);
+        !empty($dbLog) ? insertDatabaseLog($dbLog) : null ;
         $stmt->setFetchMode(PDO::FETCH_OBJ);
         return $stmt;
     }
@@ -88,11 +89,11 @@ function shouldCreateDBLog($query) {
 }
 
 function isDatabaseLogQuery($query) {
-    return !containsWords($query, "database_logs")? true : false; // Test
+    return containsWords($query, "database_logs")? true : false;
 }
 
 function isSelectStatement($query){
-    return strtolower(strtok($query, " ")) == "select"? true : false; // Test
+    return strtolower(strtok($query, " ")) == "select"? true : false;
 }
 
 function containsWords($str, $word) {
