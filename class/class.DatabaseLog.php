@@ -30,17 +30,19 @@ class Log {
           `params` VARCHAR(500) NULL,
           `rowsAffected` VARCHAR(10) NULL,
  */
-class DatabaseLog   extends Log {
+class DatabaseLog extends Log {
     public $note;
     public $sql;
     public $params;
     public $rowsAffected;
+    public $status;
     public function __construct($note, $sql, $params, $rowsAffected) {
         parent::__construct();
         $this->note         = !empty($note) ? $note : null;
         $this->sql          = $sql;
         $this->params       = $params;
         $this->rowsAffected = $rowsAffected;
+        $this->status       = "Incomplete";
     }
 }
 
