@@ -41,7 +41,7 @@ function insert_database_log(DatabaseLog $dbLog) {
 
     $databaseConnection = dbConnection();
 
-    $sql['query'] = "INSERT INTO database_logs (id, created, createdBy, note, url, `sql`, params, server, rowsAffected) 
+    $sql['query'] = "INSERT INTO database_logs (id, created, createdBy, note, url, `sql`, params, server, rowsAffected, status) 
                         VALUES (default,                          
                         :created, 
                         :createdBy, 
