@@ -2,9 +2,7 @@
 include SITE_ROOT . '/db/query/database_log.php';
 
 function createDatabaseLogTable() {
-    echo '<div>hit</div>';
     return create_table_database_logs();
-
 }
 
 function isTableCreated($table) {

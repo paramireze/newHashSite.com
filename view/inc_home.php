@@ -1,5 +1,6 @@
-<h1>Pauls Awesome Page</h1>
-<div>Suck it!</div>
+<h1>Test Website</h1>
+<h3>don't judge me</h3>
+
 <?php
 include SITE_ROOT . '/db/bootstrap.php';
 

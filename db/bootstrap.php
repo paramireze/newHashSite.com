@@ -1,6 +1,7 @@
 <?php
 function rebuildDB() {
-    //dropTable();
+
+    echo '<div>is table created? ' . isTableCreated('database_logs') . '</div>';
 
     if (!isTableCreated('database_logs')) {
         echo '<div>added db log table</div>';
@@ -11,7 +12,6 @@ function rebuildDB() {
         createUserTable();
         addUsers();
     }
-
 }
 
 function dropTable() {
@@ -31,6 +31,6 @@ function populatePeople() {
     $fedora = new User('zerimar', 'bryan', 'ramirez', 'email@another.com');
     $sdv    = new User('steaming dog vomit', 'jack', 'philiac', 'email@third.com');
     return array($nummy, $fedora, $sdv);
-}
+}       
 
 ?>
