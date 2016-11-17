@@ -5,7 +5,6 @@ function rebuildDB() {
     if (!isTableCreated('database_logs')) {
         echo '<div>added db log table</div>';
         createDatabaseLogTable();
-        addDatabaseLogs();
     }
 
     if (!isTableCreated('user')) {
