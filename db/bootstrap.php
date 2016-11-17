@@ -14,27 +14,16 @@ function rebuildDB() {
 
 }
 
-function addDatabaseLogs() {
-    //$note, $sql, $params, $rowsAffected
-    $databaseLog1 = new DatabaseLog('this is an insert or someting', 'create stuff from stuff', 'id:1,sql:stuff', '2');
-    $databaseLog2 = new DatabaseLog('this is an insert or someting else', 'create more from stuff', 'id:2,sql:stuff', '4');
-    $databaseLogs = array($databaseLog1, $databaseLog2);
-    insertDatabaseLogs($databaseLogs);
-}
-
 function dropTable() {
     $databaseConnection = dbConnection();
     $sql = "drop table user;";
     do_pdo_query($databaseConnection, $sql, null);
 }
 
-
 function addUsers() {
 
     $people = populatePeople();
-
     addPeopleToDB($people);
-
 }
 
 function populatePeople() {
