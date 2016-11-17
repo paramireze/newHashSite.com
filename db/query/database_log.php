@@ -14,6 +14,7 @@ function create_table_database_logs() {
           `params` VARCHAR(500) NULL,
           `server` VARCHAR(300) NULL,
           `rowsAffected` VARCHAR(10) NULL,
+          `status` VARCHAR(100) NULL,
           PRIMARY KEY (`id`));";
 
     return do_pdo_query($databaseConnection, $sql, null);
@@ -36,10 +37,8 @@ function get_all_database_logs() {
     return do_pdo_query($databaseConnection, $sql['query'], $sql['params']);
 }
 
-function insert_database_log(DatabaseLog $databaseLog) {
-    echo '<pre>';
-    print_r($databaseLog);
-    echo '</pre>';
+function insert_database_log(DatabaseLog $dbLog) {
+
     $databaseConnection = dbConnection();
 
     $sql['query'] = "INSERT INTO database_logs (id, created, createdBy, note, url, `sql`, params, server, rowsAffected) 
@@ -51,18 +50,22 @@ function insert_database_log(DatabaseLog $databaseLog) {
                         :sql,
                         :params,
                         :server,
-                        :rowsAffected);";
-    $sql['params'][":note"]         = $databaseLog->note;
-    $sql['params'][":created"]      = $databaseLog->created;
-    $sql['params'][":createdBy"]    = $databaseLog->createdBy;
-    $sql['params'][":url"]          = $databaseLog->url;
-    $sql['params'][":sql"]          = $databaseLog->sql;
-    $sql['params'][":params"]       = $databaseLog->params;
-    $sql['params'][":server"]       = $databaseLog->server;
-    $sql['params'][":rowsAffected"] = $databaseLog->rowsAffected;
+                        :rowsAffected,
+                        :status);";
+    $sql['params'][":note"]         = $dbLog->note;
+    $sql['params'][":created"]      = $dbLog->created;
+    $sql['params'][":createdBy"]    = $dbLog->createdBy;
+    $sql['params'][":url"]          = $dbLog->url;
+    $sql['params'][":sql"]          = $dbLog->sql;
+    $sql['params'][":params"]       = $dbLog->params;
+    $sql['params'][":server"]       = $dbLog->server;
+    $sql['params'][":rowsAffected"] = $dbLog->rowsAffected;
+    $sql['params'][":status"]       = $dbLog->status;
 
 
-    return do_pdo_query($databaseConnection, $sql['query'], $sql['params']);
+    $result = do_pdo_query($databaseConnection, $sql['query'], $sql['params']);
+
+    return $dbLog; // send back the log for future use?
 }
 
 ?>
