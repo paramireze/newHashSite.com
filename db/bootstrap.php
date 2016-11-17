@@ -1,14 +1,15 @@
 <?php
 function rebuildDB() {
     //dropTable();
-    createDatabaseLogTable();
-    if (isTableCreated('database_logs')) {
+
+    if (!isTableCreated('database_logs')) {
         echo '<div>added db log table</div>';
+        createDatabaseLogTable();
         addDatabaseLogs();
     }
 
-    createUserTable();
-    if (isTableCreated('database_logs')) {
+    if (!isTableCreated('user')) {
+        createUserTable();
         addUsers();
     }
 
@@ -21,7 +22,7 @@ function addDatabaseLogs() {
     $databaseLogs = array($databaseLog1, $databaseLog2);
     insertDatabaseLogs($databaseLogs);
 }
-    
+
 function dropTable() {
     $databaseConnection = dbConnection();
     $sql = "drop table user;";
@@ -43,6 +44,5 @@ function populatePeople() {
     $sdv    = new User('steaming dog vomit', 'jack', 'philiac', 'email@third.com');
     return array($nummy, $fedora, $sdv);
 }
-
 
 ?>
