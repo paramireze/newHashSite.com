@@ -1,7 +1,7 @@
 <?php
 
 class Log {
-    protected   $id;
+    public      $id;
     public      $created;
     public      $createdBy;
     public      $url;
@@ -12,10 +12,6 @@ class Log {
         $this->createdBy    = !empty($_SESSION['name']) ? $_SESSION['name'] : 'not logged in';
         $this->url          = $_SERVER['REQUEST_URI'];
         $this->server       = $_SERVER['SERVER_ADDR'];
-    }
-
-    public function getId() {
-        return $this->id;
     }
 }
 
@@ -31,7 +27,7 @@ class DatabaseLog extends Log {
         $this->sql          = $sql;
         $this->params       = $params;
         $this->rowsAffected = 0;
-        $this->status       = "Incomplete";
+        $this->status       = "Fail";
     }
 }
 
