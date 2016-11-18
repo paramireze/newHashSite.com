@@ -12,12 +12,7 @@ function isTableCreated($table) {
 
 function getAllDatabaseLogs() {
     $result = get_all_database_logs();
-    foreach ($result->fetchAll() as $log) {
-        echo '<pre>';
-        print_r($log);
-        echo '</pre>';
-    }
-
+    return $result->fetchAll();
 }
 
 function insertDatabaseLogs($logs) {
@@ -28,6 +23,10 @@ function insertDatabaseLogs($logs) {
             die('bad insert');
         }
     }
+}
+
+function updateDatabaseLog($databaseLog) {
+    return update_database_log($databaseLog);
 }
 
 
