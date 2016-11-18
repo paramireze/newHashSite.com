@@ -2,11 +2,15 @@
 <h3>don't judge me</h3>
 
 <?php
+setUser();
 include SITE_ROOT . '/db/bootstrap.php';
 
 rebuildDB();
-getAllDatabaseLogs();
+$dbLogs = getAllDatabaseLogs();
 
-//$hashEvent1 = new Event($nummy, "Nummy's hash Run", "Aug 5th, 2016", "it will be great!");
+include SITE_ROOT . '/view/databaseLogs/inc_displayLogs.php';
+
+
+
 
 ?>
