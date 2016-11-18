@@ -1,11 +1,10 @@
 <?php
 function rebuildDB() {
 
-    echo '<div>is table created? ' . isTableCreated('database_logs') . '</div>';
+    createDatabaseLogTable();
 
     if (!isTableCreated('database_logs')) {
         echo '<div>added db log table</div>';
-        createDatabaseLogTable();
     }
 
     if (!isTableCreated('user')) {
