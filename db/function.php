@@ -20,10 +20,12 @@ function dbConnection() {
 
 if (!function_exists('do_pdo_query')) {
     function do_pdo_query($db, $query, $query_params = NULL) {
+        $dbLog = null;
 
-        $dbLog = startLog($query, $query_params);
-        if (!empty($dbLog)) {
-            dumpData($dbLog);
+        // ignore select statements and db logs inserts
+        if (shouldCreateDBLog($query)) {
+            $dbLog = new DatabaseLog("", $query, getParameters($query_params));
+            $dbLog = insertDatabaseLog($dbLog);
         }
 
         if (empty($query_params)) {
@@ -42,7 +44,6 @@ if (!function_exists('do_pdo_query')) {
                     $stmt->bindValue($key, $value);
                 }
                 $result = $stmt->execute();
-                //$dbLog->rowsAffected = !empty($dbLog) ? $stmt->rowCount() : null;
             } catch (Exception $e) {
                 $log_msg = 'problem executing query "' . $query . '": ' . $e->getMessage();
                 die( $log_msg);
@@ -54,19 +55,13 @@ if (!function_exists('do_pdo_query')) {
             }
         }
 
-        !empty($dbLog) ? insertDatabaseLog($dbLog) : null ;
+        // update the db log status to 'success'
+        if (shouldCreateDBLog($query) && !empty($dbLog)) {
+            updateDatabaseLog($dbLog);
+        }
+
         $stmt->setFetchMode(PDO::FETCH_OBJ);
         return $stmt;
-    }
-}
-
-if (!function_exists('startLog')) {
-    function startLog($query, $params) {
-        $dbLog = null;
-        if (shouldCreateDBLog($query)) {
-            $dbLog = new DatabaseLog("No Note", $query, getParameters($params));
-        }
-        return $dbLog;
     }
 }
 
@@ -89,7 +84,7 @@ function shouldCreateDBLog($query) {
 }
 
 function isDatabaseLogQuery($query) {
-    return containsWords($query, "database_logs")? true : false;
+    return containsWords($query, "database_logs") || containsWords($query, "SHOW TABLES")? true : false;
 }
 
 function isSelectStatement($query){
