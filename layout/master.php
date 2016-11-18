@@ -10,7 +10,7 @@ include SITE_ROOT . '/db/database_logs_functions.php';
 
 // site wide functions
 include SITE_ROOT . '/function/common.php';
-setUser();
+
 ?>
 <!doctype html>
 

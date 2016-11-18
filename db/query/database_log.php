@@ -37,9 +37,17 @@ function get_all_database_logs() {
     return do_pdo_query($databaseConnection, $sql['query'], $sql['params']);
 }
 
+function update_database_log(DatabaseLog $dbLog) {
+    $databaseConnection = dbConnection();
+
+    $sql['query'] = "update database_logs set rowsAffected = '1', status = 'Success' where id = :id";
+    $sql['params'][":id"]         = $dbLog->id;
+    return do_pdo_query($databaseConnection, $sql['query'], $sql['params']);
+}
+
 function insert_database_log(DatabaseLog $dbLog) {
 
-    $databaseConnection = dbConnection();
+    $db = dbConnection();
 
     $sql['query'] = "INSERT INTO database_logs (id, created, createdBy, note, url, `sql`, params, server, rowsAffected, status) 
                         VALUES (default,                          
@@ -63,9 +71,21 @@ function insert_database_log(DatabaseLog $dbLog) {
     $sql['params'][":status"]       = $dbLog->status;
 
 
-    $result = do_pdo_query($databaseConnection, $sql['query'], $sql['params']);
+    // do our own query so we can retrieve the lastInsertID
+    $stmt = $db->prepare($sql['query']);
+    if ($stmt == NULL) {
+        die( $sql['query']);
+    }
 
-    return $dbLog; // send back the log for future use?
+    foreach ($sql['params'] as $key => $value) {
+        $stmt->bindValue($key, $value);
+    }
+
+    $result = $stmt->execute();
+    if (!empty($result)) {
+        $dbLog->id = $db->lastInsertId();
+        return $dbLog; // send back the log for future use?
+    }
 }
 
 ?>
