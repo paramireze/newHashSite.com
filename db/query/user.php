@@ -43,7 +43,7 @@ function create_user($user) {
     $databaseConnection = dbConnection();
     $sql['query'] = "insert into user (id, password, firstName, lastName, hashName, email) values (default, :password, :firstName, :lastName, :hashName, :email)";
     //$sql['params'][':password']     = $user->getPassword();
-    $sql['params'][':password']     = 'password';
+    $sql['params'][':password']     = $user->getPassword();
     $sql['params'][':firstName']    = $user->firstName;
     $sql['params'][':lastName']     = $user->lastName;
     $sql['params'][':hashName']     = $user->hashName;

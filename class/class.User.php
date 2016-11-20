@@ -8,8 +8,8 @@ class User {
     public $email;
 
     public function __construct($password, $hashName, $firstName, $lastName, $email) {
-        echo '<div>making password: ' . hash('sha512',$password). '</div>';
-        $this->password     =  hash('sha512',$password);
+        $hashedPassword = hash('sha512',$password);
+        $this->password     = $hashedPassword;
         $this->hashName     = $hashName;
         $this->firstName    = $firstName;
         $this->lastName     = $lastName;
@@ -21,9 +21,9 @@ class User {
 
     }
 
-   /* public function getPassword() {
+    public function getPassword() {
         return $this->password;
-    }*/
+    }
 
     public function getId() {
         return $this->id;

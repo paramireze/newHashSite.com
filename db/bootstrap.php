@@ -9,8 +9,8 @@ function rebuildDB() {
     if (!isTableCreated('user')) {
         createUserTable();
         addUsers();
-
     }
+
 }
 
 function dropTable() {
