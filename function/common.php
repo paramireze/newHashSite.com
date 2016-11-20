@@ -1,5 +1,11 @@
 <?php
 
+function isFirstTimeAtSite() {
+    if (!isset($_COOKIE['firsttime'])) {
+        setcookie("firsttime", "no", /* EXPIRE */);
+    }
+}
+
 function isProduction() {
     return $_SESSION['production'];
 }
