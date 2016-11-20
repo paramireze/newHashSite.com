@@ -1,7 +1,6 @@
 <?php
 
 function create_table_database_logs() {
-    // $sql, $params, $rowsAffected
     $databaseConnection = dbConnection();
     $sql = "
          CREATE TABLE IF NOT EXISTS `test_madisonh3_com`.`database_logs` (
@@ -49,7 +48,7 @@ function insert_database_log(DatabaseLog $dbLog) {
 
     $db = dbConnection();
 
-    $sql['query'] = "INSERT INTO database_logs (id, created, createdBy, note, url, `sql`, params, server, rowsAffected, status) 
+    $sql['query'] = "INSERT INTO database_logs (id, created, createdBy, note, url, `sql`, params, server, status) 
                         VALUES (default,                          
                         :created, 
                         :createdBy, 
@@ -58,7 +57,6 @@ function insert_database_log(DatabaseLog $dbLog) {
                         :sql,
                         :params,
                         :server,
-                        :rowsAffected,
                         :status);";
     $sql['params'][":note"]         = $dbLog->note;
     $sql['params'][":created"]      = $dbLog->created;
@@ -67,7 +65,6 @@ function insert_database_log(DatabaseLog $dbLog) {
     $sql['params'][":sql"]          = $dbLog->sql;
     $sql['params'][":params"]       = $dbLog->params;
     $sql['params'][":server"]       = $dbLog->server;
-    $sql['params'][":rowsAffected"] = $dbLog->rowsAffected;
     $sql['params'][":status"]       = $dbLog->status;
 
 

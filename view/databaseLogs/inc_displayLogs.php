@@ -10,7 +10,6 @@ echo "<table class='table'>
             <th>sql</th>
             <th>params</th>
             <th>server</th>
-            <th>rowsAffected</th>
             <th>status</th>
             
         </tr>
@@ -24,7 +23,6 @@ foreach ($dbLogs as $log) {
             <td>" . $log->sql . "</td>
             <td>" . $log->params . "</td>
             <td>" . $log->server . "</td>
-            <td>" . $log->rowsAffected . "</td>
             <td>" . $log->status . "</td></tr>";
 }
 echo "
