@@ -6,10 +6,10 @@ function rebuildDB() {
     if (!isTableCreated('database_logs')) {
         echo '<div>added db log table</div>';
     }
-
     if (!isTableCreated('user')) {
         createUserTable();
         addUsers();
+
     }
 }
 
@@ -26,9 +26,9 @@ function addUsers() {
 }
 
 function populatePeople() {
-    $nummy  = new User('nummy', 'paul', 'ramirez', 'email@email.com');
-    $fedora = new User('zerimar', 'bryan', 'ramirez', 'email@another.com');
-    $sdv    = new User('steaming dog vomit', 'jack', 'philiac', 'email@third.com');
+    $nummy  = new User('password', 'nummy',     'paul', 'ramirez', 'email@email.com');
+    $fedora = new User('password', 'zerimar',   'bryan','ramirez', 'email@another.com');
+    $sdv    = new User('password', 'steaming',  'jack', 'philiac', 'email@third.com');
     return array($nummy, $fedora, $sdv);
 }       
 

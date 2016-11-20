@@ -41,7 +41,9 @@ function get_user_by_name($firstName, $lastName) {
  */
 function create_user($user) {
     $databaseConnection = dbConnection();
-    $sql['query'] = "insert into user (id, firstName, lastName, hashName, email) values (default, :firstName, :lastName, :hashName, :email)";
+    $sql['query'] = "insert into user (id, password, firstName, lastName, hashName, email) values (default, :password, :firstName, :lastName, :hashName, :email)";
+    //$sql['params'][':password']     = $user->getPassword();
+    $sql['params'][':password']     = 'password';
     $sql['params'][':firstName']    = $user->firstName;
     $sql['params'][':lastName']     = $user->lastName;
     $sql['params'][':hashName']     = $user->hashName;
@@ -50,13 +52,14 @@ function create_user($user) {
 }
 
 /*
- * 
+ *
  */
 function create_user_table() {
     $databaseConnection = dbConnection();
     $sql = "
          CREATE TABLE IF NOT EXISTS `test_madisonh3_com`.`user` (
           `id` INT NOT NULL AUTO_INCREMENT,
+          `password` VARCHAR(300) NULL,
           `firstName` VARCHAR(45) NULL,
           `lastName` VARCHAR(45) NULL,
           `email` VARCHAR(45) NULL,
