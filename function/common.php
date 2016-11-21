@@ -2,8 +2,12 @@
 
 function isFirstTimeAtSite() {
     if (!isset($_COOKIE['firsttime'])) {
-        setcookie("firsttime", "no", /* EXPIRE */);
+        setcookie("firsttime", "no");
     }
+}
+
+function setSuccessConfirmationMessage($message = "Successfully Submitted Form") {
+    $_session['confirmation'] = array("type"=>"success", "message"=>$message);
 }
 
 function isProduction() {

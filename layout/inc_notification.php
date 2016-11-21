@@ -1,18 +1,10 @@
 <?php
 
-// delete me later, this will not be used
-$_SESSION['notification']['type'] = 'success';
-$_SESSION['notification']['message'] = 'message';
+if (isset($_SESSION['confirmation'])) {
 
-if (isset($_SESSION['notification'])) {
+    echo "<div class='alert alert-" . $_SESSION["confirmation"]["type"] . ">". $_SESSION["confirmation"]["message"] . "</div>";
 
-    // assign locally and unset notification
-    $notificationType = $_SESSION['notification']['type'];
-    $notificationMessage = $_SESSION['notification']['message'];
     unset($_SESSION['notification']);
-
-    echo "
-    <div class='alert alert-$notificationType'>
-        $notificationMessage
-    </div>";
 }
+
+?>
