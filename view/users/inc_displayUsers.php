@@ -1,6 +1,6 @@
 <?php
 
-echo "<table class='table table-condensed table-striped'>
+echo "<div class='table-responsive'><table class='table table-condensed table-striped'>
         <tr>
             <th>id</th>
             <th>first name</th>
@@ -24,5 +24,5 @@ foreach ($users as $user) {
             <td>" . $enabled  . "</td>
             <td>" . $user->password . "</td></tr>";
 }
-  echo "</table>";
+  echo "</table></div>";
 ?>

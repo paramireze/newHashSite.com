@@ -1,6 +1,6 @@
 <?php
 
-echo "<table class='table table-condensed table-striped'>
+echo "<div class='table-responsive'><table class='table table-condensed table-striped'>
         <tr>
             <th>id</th>
             <th>created</th>
@@ -25,6 +25,5 @@ foreach ($dbLogs as $log) {
             <td>" . $log->server . "</td>
             <td>" . $log->status . "</td></tr>";
 }
-echo "
-    </table>";
+echo "</div></table>";
 ?>
