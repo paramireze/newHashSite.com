@@ -1,6 +1,6 @@
 <?php
 
-echo "<table class='table'>
+echo "<table class='table table-condensed table-striped'>
         <tr>
             <th>id</th>
             <th>created</th>

@@ -1,6 +1,6 @@
 <?php
 
-echo "<table class='table'>
+echo "<table class='table table-condensed table-striped'>
         <tr>
             <th>id</th>
             <th>first name</th>
@@ -21,9 +21,8 @@ foreach ($users as $user) {
             <td>" . $user->hashName . "</td>
             <td>" . $user->email . "</td>
             <td>" . $user->created . "</td>
-            <td>" . $enabled  . "</td><
+            <td>" . $enabled  . "</td>
             <td>" . $user->password . "</td></tr>";
 }
-echo "
-    </table>";
+  echo "</table>";
 ?>
