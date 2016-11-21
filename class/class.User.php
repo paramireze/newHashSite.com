@@ -6,6 +6,8 @@ class User {
     public $firstName;
     public $lastName;
     public $email;
+    public $created;
+    public $enabled;
 
     public function __construct($password, $hashName, $firstName, $lastName, $email) {
         $hashedPassword = hash('sha512',$password);
@@ -14,6 +16,8 @@ class User {
         $this->firstName    = $firstName;
         $this->lastName     = $lastName;
         $this->email        = $email;
+        $this->created      = getTimeStamp();
+        $this->enabled      = true;
     }
 
     public function setPassword($password) {

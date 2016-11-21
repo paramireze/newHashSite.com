@@ -6,17 +6,23 @@ echo "<table class='table'>
             <th>first name</th>
             <th>last name</th>
             <th>hash name</th>
-            <th>password</th>
             <th>email</th>
+            <th>created</th>
+            <th>enabled</th>
+            <th>password</th>
         </tr>
         ";
 foreach ($users as $user) {
+
+  $enabled = isset($user->enabled) && $user->enabled == true ? "true" : "false";
   echo "<tr><td>" . $user->id . "</td>
             <td>" . $user->firstName . "</td>
             <td>" . $user->lastName . "</td>
             <td>" . $user->hashName . "</td>
-            <td>" . $user->password . "</td>
-            <td>" . $user->email . "</td></tr>";
+            <td>" . $user->email . "</td>
+            <td>" . $user->created . "</td>
+            <td>" . $enabled  . "</td><
+            <td>" . $user->password . "</td></tr>";
 }
 echo "
     </table>";

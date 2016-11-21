@@ -41,13 +41,15 @@ function get_user_by_name($firstName, $lastName) {
  */
 function create_user($user) {
     $databaseConnection = dbConnection();
-    $sql['query'] = "insert into user (id, password, firstName, lastName, hashName, email) values (default, :password, :firstName, :lastName, :hashName, :email)";
+    $sql['query'] = "insert into user (id, password, firstName, lastName, hashName, email, created, enabled) values (default, :password, :firstName, :lastName, :hashName, :email, :created, :enabled)";
     //$sql['params'][':password']     = $user->getPassword();
     $sql['params'][':password']     = $user->getPassword();
     $sql['params'][':firstName']    = $user->firstName;
     $sql['params'][':lastName']     = $user->lastName;
     $sql['params'][':hashName']     = $user->hashName;
     $sql['params'][':email']        = $user->email;
+    $sql['params'][':created']      = $user->created;
+    $sql['params'][':enabled']      = $user->enabled;
     return do_pdo_query($databaseConnection, $sql['query'], $sql['params']);
 }
 
@@ -59,11 +61,13 @@ function create_user_table() {
     $sql = "
          CREATE TABLE IF NOT EXISTS `test_madisonh3_com`.`user` (
           `id` INT NOT NULL AUTO_INCREMENT,
-          `password` VARCHAR(300) NULL,
+          `password` VARCHAR(300) NOT NULL,
           `firstName` VARCHAR(45) NULL,
-          `lastName` VARCHAR(45) NULL,
-          `email` VARCHAR(45) NULL,
-          `hashName` VARCHAR(45) NULL,
+          `lastName` VARCHAR(45)  NULL,
+          `email` VARCHAR(45) NOT NULL,
+          `hashName` VARCHAR(45) NOT NULL,
+          `created` TIMESTAMP NOT NULL,
+          `enabled` TINYINT(1) NOT NULL,
           PRIMARY KEY (`id`),
           UNIQUE INDEX `email_UNIQUE` (`email` ASC));";
 
