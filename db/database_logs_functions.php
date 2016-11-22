@@ -1,5 +1,5 @@
 <?php
-include SITE_ROOT . '/db/query/database_log.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/db/query/database_log.php';
 
 function createDatabaseLogTable() {
     return create_table_database_logs();

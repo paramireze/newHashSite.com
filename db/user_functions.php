@@ -1,5 +1,5 @@
 <?php
-include SITE_ROOT . '/db/query/user.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/db/query/user.php';
 
 function getUsers() {
     return get_users();
