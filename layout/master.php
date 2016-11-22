@@ -5,8 +5,8 @@ include $_SERVER['DOCUMENT_ROOT'] . '/config/testConfig.php';
 
 // get the db connection and functions
 include $_SERVER['DOCUMENT_ROOT'] . '/db/function.php';
-include $_SERVER['DOCUMENT_ROOT'] . '/db/user_functions.php';
-include $_SERVER['DOCUMENT_ROOT'] . '/db/database_logs_functions.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/db/function/user_functions.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/db/function/database_logs_functions.php';
 
 // site wide functions
 include $_SERVER['DOCUMENT_ROOT'] . '/function/common.php';
