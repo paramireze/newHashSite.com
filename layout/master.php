@@ -1,7 +1,5 @@
 <?php
 
-// config file declaring doc environmental variables and db connection info
-include $_SERVER['DOCUMENT_ROOT'] . '/config/testConfig.php';
 
 // get the db connection and functions
 include $_SERVER['DOCUMENT_ROOT'] . '/db/function.php';
