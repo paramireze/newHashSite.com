@@ -37,6 +37,10 @@ function MyAutoload($className){
     include_once($_SERVER['DOCUMENT_ROOT'] . '/class/class.' . $className . '.php');
 }
 
+function isAuthenticated() {
+    
+}
+
 spl_autoload_register('MyAutoload');
 
 ?>
