@@ -22,9 +22,9 @@
 
             <ul class="nav navbar-nav navbar-right">
                 <?php if (isLoggedIn()) {
-                    echo "<li><a href='profile'>Hello " . $_SESSION['user'] . "</a></li>";
+                    echo "<li><a href='profile'>Logout</a></li>";
                 } else {
-
+                    echo "<li><a href='profile'>Login</a></li>";
                 } ?>
 
 <!--                <li><a href="#">login</a></li>-->

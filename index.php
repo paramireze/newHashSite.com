@@ -15,11 +15,14 @@ include $_SERVER['DOCUMENT_ROOT'] . '/function/common.php';
 
 $params = explode('/', rtrim($_SERVER['REQUEST_URI'], '/'));
 array_shift($params);
-
 switch($params[0])  {
-    case 'home' || '':
+    case "":
         $page_content = home($params);
         break;
+    case "home":
+        $page_content = home($params);
+        break;
+
     case 'login':
         $page_content = auth($params);
         break;
