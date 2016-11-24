@@ -22,6 +22,9 @@ switch($params[0])  {
     case 'login':
         $page_content = auth($params);
         break;
+    case 'profile':
+        $page_content = auth($params);
+        break;
 }
 
 include($_SERVER['DOCUMENT_ROOT'] . '/layout/master.php');

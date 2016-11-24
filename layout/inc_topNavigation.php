@@ -21,7 +21,12 @@
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="">Paul Ramirez Account</a></li>
+                <?php if (isLoggedIn()) {
+                    echo "<li><a href='profile'>Hello " . $_SESSION['user'] . "</a></li>";
+                } else {
+
+                } ?>
+
 <!--                <li><a href="#">login</a></li>-->
             </ul>
         </div><!-- /.navbar-collapse -->
