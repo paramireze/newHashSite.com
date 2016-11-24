@@ -2,17 +2,17 @@
 class User {
     protected $id; // do not allow user to set this property - only get
     protected $password;
-    public $hashName;
+    public $userName;
     public $firstName;
     public $lastName;
     public $email;
     public $created;
     public $enabled;
 
-    public function __construct($password, $hashName, $firstName, $lastName, $email) {
+    public function __construct($password, $userName, $firstName, $lastName, $email) {
         $hashedPassword = hash('sha512',$password);
         $this->password     = $hashedPassword;
-        $this->hashName     = $hashName;
+        $this->userName     = $userName;
         $this->firstName    = $firstName;
         $this->lastName     = $lastName;
         $this->email        = $email;
