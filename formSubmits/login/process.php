@@ -1,0 +1,3 @@
+<?php
+    dumpData($_POST);   
+?>
