@@ -9,7 +9,6 @@ include $_SERVER['DOCUMENT_ROOT'] . '/db/function/database_logs_functions.php';
 
 // site wide functions
 include $_SERVER['DOCUMENT_ROOT'] . '/function/common.php';
-include $_SERVER['DOCUMENT_ROOT'] . '/view/login.php';
 
 
 $params = explode('/', rtrim($_SERVER['REQUEST_URI'], '/'));
@@ -17,19 +16,23 @@ array_shift($params);
 
 switch($params[0])  {
     case 'home':
-        $page_content = "/view/home/inc_home.php";
+        include $_SERVER['DOCUMENT_ROOT'] . '/controller/home.php';
+        $page_content = home($params);
         break;
     case 'login':
+        include $_SERVER['DOCUMENT_ROOT'] . '/controller/login.php';
         $page_content = auth($params);
         break;
     case 'profile':
-        $page_content = auth($params);
+        //$page_content = auth($params);
         break;
 }
 
+if (empty($page_content)) {
+    $page_content = '/view/404.php';
+}
+
 include($_SERVER['DOCUMENT_ROOT'] . '/layout/master.php');
-
-
 /* example code for grabbing a id
 if (isset($params[1]) && ctype_digit($params[1])) {
     echo "<h3>" . $params[1] . "</h3>";
