@@ -23,7 +23,7 @@ function getTimeStamp() {
 }
 
 function isLoggedIn() {
-    return isset($_SESSION['user']) && !empty($_SESSION['user'];
+    return isset($_SESSION['user']) && !empty($_SESSION['user']);
 }
 
 function dumpData($data, $die = false) {
