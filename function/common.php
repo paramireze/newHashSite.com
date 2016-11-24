@@ -14,10 +14,6 @@ function isProduction() {
     return $_SESSION['production'];
 }
 
-function setUser() {
-    $_SESSION['user'] = 'nummy';
-}
-
 function getTimeStamp() {
     return date("Y-m-d H:i:s");
 }

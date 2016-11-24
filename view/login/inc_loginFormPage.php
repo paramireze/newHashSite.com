@@ -1,5 +1,5 @@
 
-<form class="container" action="<?php $_SERVER['DOCUMENT_ROOT']; ?>login/auth" method="post">
+<form class="container" action="<?php $_SERVER['DOCUMENT_ROOT']; ?>process/login/proce" method="post">
   <div class="form-group">
     <label for="inputUserName">User Name</label>
     <input type="text" class="form-control" id="inputUserName" name="userName" placeholder="User Name">

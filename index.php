@@ -19,13 +19,20 @@ switch($params[0])  {
     case "":
         $page_content = home($params);
         break;
+
     case "home":
         $page_content = home($params);
+        break;
+
+    case 'logout':
+        unset($_SESSION['user']);
+        $page_content = auth($params);
         break;
 
     case 'login':
         $page_content = auth($params);
         break;
+
     case 'profile':
         $page_content = profile($params);
         break;
