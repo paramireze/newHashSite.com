@@ -1,6 +1,4 @@
-<?php
-// config file declaring doc environmental variables and db connection info
-include $_SERVER['DOCUMENT_ROOT'] . '/config/testConfig.php';
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/config/testConfig.php';
 
 // access controllers
 include $_SERVER['DOCUMENT_ROOT'] . '/controller/registeredControllers.php';
@@ -37,8 +35,11 @@ switch($params[0])  {
 
 }
 
+
 if (!empty($page_content)) {
     include($_SERVER['DOCUMENT_ROOT'] . '/layout/master.php');
+} else {
+    echo 'failed conditional';
 }
 
 /* example code for grabbing a id

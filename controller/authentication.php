@@ -23,10 +23,10 @@
                 $password = $_POST['password'];
                 
                 if (empty($userName) || empty($password)) {
-                    $_SESSION["confirmation"]["type"] = "fail";
-                    $_SESSION["confirmation"]["message"] = "Missing Username or password";
-                    header('Location: '. $_SERVER['DOCUMENT_ROOT']);
-                    exit();
+                    //$_SESSION["confirmation"]["type"] = "fail";
+                    //$_SESSION["confirmation"]["message"] = "Missing Username or password";
+                    $_SERVER['REQUEST_URI'] = "";
+                    $page_content = home($params);
                 }
 
         }
