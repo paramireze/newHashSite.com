@@ -22,12 +22,11 @@
 
             <ul class="nav navbar-nav navbar-right">
                 <?php if (isLoggedIn()) {
-                    echo "<li><a href='logout'>Logout</a></li>";
+                    echo "<li><a href='auth/logout'>Logout</a></li>";
                 } else {
-                    echo "<li><a href='login'>Login</a></li>";
+                    echo "<li><a href='auth/login'>Login</a></li>";
                 } ?>
 
-<!--                <li><a href="#">login</a></li>-->
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
