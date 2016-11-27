@@ -1,5 +1,5 @@
 
-<form class="container" action="authenticate" method="post">
+<form class="container" action="<?php echo SITE_URL; ?>auth/authenticate" method="post">
   <div class="form-group">
     <label for="inputUserName">User Name</label>
     <input type="text" class="form-control" id="inputUserName" name="userName" placeholder="User Name">

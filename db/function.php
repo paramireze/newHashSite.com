@@ -12,7 +12,7 @@ function dbConnection() {
     catch(PDOException $e)
     {
         $dbh = null;
-        echo $e->getMessage();
+        //echo $e->getMessage();
     }
     return $dbh;
 

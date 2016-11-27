@@ -15,7 +15,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="home">Home <span class="sr-only">(current)</span></a></li>
+                <li class="active"><a href="<?php echo SITE_URL; ?>">Home <span class="sr-only">(current)</span></a></li>
 
 
             </ul>
@@ -24,7 +24,7 @@
                 <?php if (isLoggedIn()) {
                     echo "<li><a href='auth/logout'>Logout</a></li>";
                 } else {
-                    echo "<li><a href='auth/login'>Login</a></li>";
+                    echo "<li><a href=" . SITE_URL . "auth/login>Login</a></li>";
                 } ?>
 
             </ul>

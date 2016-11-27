@@ -9,7 +9,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/db/function/user_functions.php';
 include $_SERVER['DOCUMENT_ROOT'] . '/db/function/database_logs_functions.php';
 // site wide functions
 include $_SERVER['DOCUMENT_ROOT'] . '/function/common.php';
-
+include $_SERVER['DOCUMENT_ROOT'] . '/function/urlLinks.php';
 
 $params = explode('/', rtrim($_SERVER['REQUEST_URI'], '/'));
 array_shift($params); // git rid of first item... null value
@@ -31,10 +31,9 @@ switch($params[0])  {
         break;
 
     default:
-        header($_SERVER['DOCUMENT_ROOT']);
+        header('location:' . $_SERVER['DOCUMENT_ROOT']);
 
 }
-
 
 if (!empty($page_content)) {
     include($_SERVER['DOCUMENT_ROOT'] . '/layout/master.php');

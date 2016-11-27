@@ -21,7 +21,7 @@ class User {
     }
 
     public function setPassword($password) {
-        echo 'hi';
+        //echo 'hi';
 
     }
 

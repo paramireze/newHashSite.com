@@ -1,6 +1,10 @@
 <?php
 if (!isProduction()) {
 
+    echo '<h1>Site URL</h1>
+          <pre>';
+    print_r(SITE_URL);
+    echo '</pre>';
     echo '<h1>Session</h1>
           <pre>';
     print_r($_SESSION);
