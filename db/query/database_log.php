@@ -1,6 +1,7 @@
 <?php
 
 function create_table_database_logs() {
+
     $databaseConnection = dbConnection();
     $sql = "
          CREATE TABLE IF NOT EXISTS `test_madisonh3_com`.`database_logs` (
@@ -20,6 +21,7 @@ function create_table_database_logs() {
 }
 
 function check_table_exists($table) {
+
     $databaseConnection = dbConnection();
 
     $sql['query'] = "SHOW TABLES LIKE :table";

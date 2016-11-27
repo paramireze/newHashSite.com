@@ -1,18 +1,10 @@
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/config/testConfig.php';
+$params = explode('/', rtrim($_SERVER['REQUEST_URI'], '/'));
+array_shift($params); // git rid of first item... null value
 
 // access controllers
 include $_SERVER['DOCUMENT_ROOT'] . '/controller/registeredControllers.php';
 
-// get the db connection and functions
-include $_SERVER['DOCUMENT_ROOT'] . '/db/function.php';
-include $_SERVER['DOCUMENT_ROOT'] . '/db/function/user_functions.php';
-include $_SERVER['DOCUMENT_ROOT'] . '/db/function/database_logs_functions.php';
-// site wide functions
-include $_SERVER['DOCUMENT_ROOT'] . '/function/common.php';
-include $_SERVER['DOCUMENT_ROOT'] . '/function/urlLinks.php';
-
-$params = explode('/', rtrim($_SERVER['REQUEST_URI'], '/'));
-array_shift($params); // git rid of first item... null value
 switch($params[0])  {
     case "":
         $page_content = home($params);
@@ -31,9 +23,11 @@ switch($params[0])  {
         break;
 
     default:
-        header('location:' . $_SERVER['DOCUMENT_ROOT']);
-
+        header('location: ' . SITE_URL);
+        exit();
 }
+
+
 
 if (!empty($page_content)) {
     include($_SERVER['DOCUMENT_ROOT'] . '/layout/master.php');

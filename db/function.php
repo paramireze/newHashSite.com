@@ -97,4 +97,3 @@ function containsWords($str, $word) {
 
 ?>
 
-
