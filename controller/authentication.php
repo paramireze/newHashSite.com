@@ -18,15 +18,17 @@
                 break;
 
             case "authenticate":
-                $page_content = 'process/authentication/login.php';
                 $userName = $_POST['userName'];
                 $password = $_POST['password'];
-                
-                if (empty($userName) || empty($password)) {
+
+                if (!empty($userName) && !empty($password)) {
+                    $page_content = 'process/authentication/login.php';
+                } else {
+
                     //$_SESSION["confirmation"]["type"] = "fail";
                     //$_SESSION["confirmation"]["message"] = "Missing Username or password";
-                    $_SERVER['REQUEST_URI'] = "";
-                    $page_content = home($params);
+                    header('location: ' . SITE_URL . '404');
+                    exit();
                 }
 
         }

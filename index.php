@@ -1,10 +1,13 @@
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/config/testConfig.php';
+
+// get the parameters in url string
 $params = explode('/', rtrim($_SERVER['REQUEST_URI'], '/'));
 array_shift($params); // git rid of first item... null value
 
 // access controllers
 include $_SERVER['DOCUMENT_ROOT'] . '/controller/registeredControllers.php';
 
+// call controller functions
 switch($params[0])  {
     case "":
         $page_content = home($params);
@@ -22,12 +25,14 @@ switch($params[0])  {
         $page_content = profile($params);
         break;
 
+    case '404':
+        $page_content = 'view/404.php';
+        break;
+
     default:
-        header('location: ' . SITE_URL);
+        header('location: ' . SITE_URL . '404');
         exit();
 }
-
-
 
 if (!empty($page_content)) {
     include($_SERVER['DOCUMENT_ROOT'] . '/layout/master.php');
