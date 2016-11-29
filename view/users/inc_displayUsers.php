@@ -5,7 +5,7 @@ echo "<div class='table-responsive'><table class='table table-condensed table-st
             <th>id</th>
             <th>first name</th>
             <th>last name</th>
-            <th>hash name</th>
+            <th>user name</th>
             <th>email</th>
             <th>created</th>
             <th>enabled</th>

@@ -61,13 +61,13 @@ function create_user_table() {
     $sql = "
          CREATE TABLE IF NOT EXISTS `test_madisonh3_com`.`user` (
           `id` INT NOT NULL AUTO_INCREMENT,
-          `password` VARCHAR(300) NOT NULL,
           `firstName` VARCHAR(45) NULL,
           `lastName` VARCHAR(45)  NULL,
           `email` VARCHAR(45) NOT NULL,
           `userName` VARCHAR(45) NOT NULL,
           `created` TIMESTAMP NOT NULL,
           `enabled` TINYINT(1) NOT NULL,
+          `password` VARCHAR(300) NOT NULL,
           PRIMARY KEY (`id`),
           UNIQUE INDEX `email_UNIQUE` (`email` ASC));";
 
