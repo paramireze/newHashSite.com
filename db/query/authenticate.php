@@ -5,23 +5,33 @@
 function is_user_name_match($userName) {
     $databaseConnection = dbConnection();
 
-    $sql['query'] = "SELECT count(*) `count` FROM user where username = :userName";
+    $sql['query'] = "SELECT id FROM user where username = :userName";
 
     $sql['params'][':userName'] = $userName;
-    return do_pdo_query($databaseConnection, $sql['query'], $sql['params']);
+
+    $result = do_pdo_query($databaseConnection, $sql['query'], $sql['params']);
+    return $result->fetch()->id;
 }
 
 /*
  *
  */
-function is_password_and_username_a_match($userName, $password) {
+function is_valid_credentials($id, $password) {
+    $isValidCredentials = false;
     $databaseConnection = dbConnection();
 
-    $sql['query'] = "SELECT * FROM user where userName = :userName and password = :password";
+    $sql['query'] = "SELECT count(*) `count` FROM user where id = :id and password = :password";
 
-    $sql['params'][':userName'] = $userName;
+    $sql['params'][':id'] = $id;
     $sql['params'][':password'] = $password;
-    return do_pdo_query($databaseConnection, $sql['query'], $sql['params']);
+    $result = do_pdo_query($databaseConnection, $sql['query'], $sql['params']);
+
+    if (!empty($result)) {
+        $result = $result->fetch()->count;
+        $isValidCredentials = $result == 1 ? true : false;
+    }
+
+    return $isValidCredentials;
 }
 
 ?>

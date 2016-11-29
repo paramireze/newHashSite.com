@@ -3,11 +3,17 @@
     $password = $_POST['password'];
 
     if (empty($userName) || empty($password)) {
-        //header('location: ' . SITE_URL . '404');
         exit('missing username or password');
     }
 
     dumpData($_POST);
-    isUserNameMatch($userName);
+    $userId = isUserNameMatch($userName);
+
+    if (!empty($userId)) {
+        $result = isValidCredentials($userId, $password);
+        echo $result == true ? 'Success' : 'failed!';
+    } else {
+        echo 'failed.';
+    }
 
 ?>
