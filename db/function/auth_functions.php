@@ -1,15 +1,25 @@
 <?php
+
+    //access the database queries
     include $_SERVER['DOCUMENT_ROOT'] . '/db/query/authenticate.php';
 
     function authenticate($userName, $password) {
-
+        $isAuthenticated = false;
         if (isUserNameMatch($userName) && isPasswordMatchForUserName($userName, $password)) {
-            return true;
+            $isAuthenticated = true;
         }
-        return authenticate($userName, $password);
+        return $isAuthenticated;
     }
 
     function isUserNameMatch($userName) {
-        return is_user_name_match($userName);
+        $result = is_user_name_match($userName);
+        $result = $result->fetch();
+        dumpData($result);
+        die();
+    }
+
+    function isPasswordMatchForUserName($userName, $password) {
+        $isAuthenticated = false;
+        return $isAuthenticated;
     }
 ?>

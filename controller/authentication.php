@@ -1,7 +1,9 @@
 <?php
 
-    function auth($params) {
+    // include database accessor functions
+    include $_SERVER['DOCUMENT_ROOT'] . '/db/function/auth_functions.php';
 
+    function auth($params) {
         $page_content = null;
         switch($params[1]) {
             case null:
@@ -18,18 +20,7 @@
                 break;
 
             case "authenticate":
-                $userName = $_POST['userName'];
-                $password = $_POST['password'];
-
-                if (!empty($userName) && !empty($password)) {
-                    $page_content = 'process/authentication/login.php';
-                } else {
-
-                    //$_SESSION["confirmation"]["type"] = "fail";
-                    //$_SESSION["confirmation"]["message"] = "Missing Username or password";
-                    header('location: ' . SITE_URL . '404');
-                    exit();
-                }
+                $page_content = 'process/authentication/login.php';
 
         }
 

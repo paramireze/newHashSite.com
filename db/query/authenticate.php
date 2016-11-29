@@ -5,11 +5,10 @@
 function is_user_name_match($userName) {
     $databaseConnection = dbConnection();
 
-    $sql['query'] = "SELECT count(*) FROM user where userName = :userName";
+    $sql['query'] = "SELECT count(*) FROM user where username = :userName";
 
-    $sql['params'][':hash'] = $userName;
-    $result = do_pdo_query($databaseConnection, $sql['query'], $sql['params']);
-
+    $sql['params'][':userName'] = $userName;
+    return do_pdo_query($databaseConnection, $sql['query'], $sql['params']);
 }
 
 /*

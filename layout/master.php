@@ -6,8 +6,8 @@ include $_SERVER['DOCUMENT_ROOT'] . '/db/function.php';
 
 include $_SERVER['DOCUMENT_ROOT'] . '/db/function/user_functions.php';
 include $_SERVER['DOCUMENT_ROOT'] . '/db/function/database_logs_functions.php';
-// site wide functions
 
+// site wide functions
 include $_SERVER['DOCUMENT_ROOT'] . '/function/common.php';
 include $_SERVER['DOCUMENT_ROOT'] . '/function/urlLinks.php';
 

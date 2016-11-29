@@ -34,6 +34,7 @@ switch($params[0])  {
         exit();
 }
 
+// 
 if (!empty($page_content)) {
     include($_SERVER['DOCUMENT_ROOT'] . '/layout/master.php');
 } else {
