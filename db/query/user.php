@@ -42,7 +42,6 @@ function get_user_by_name($firstName, $lastName) {
 function create_user($user) {
     $databaseConnection = dbConnection();
     $sql['query'] = "insert into user (id, password, firstName, lastName, userName, email, created, enabled) values (default, :password, :firstName, :lastName, :userName, :email, :created, :enabled)";
-    //$sql['params'][':password']     = $user->getPassword();
     $sql['params'][':password']     = $user->getPassword();
     $sql['params'][':firstName']    = $user->firstName;
     $sql['params'][':lastName']     = $user->lastName;

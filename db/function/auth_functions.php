@@ -14,8 +14,7 @@
     function isUserNameMatch($userName) {
         $result = is_user_name_match($userName);
         $result = $result->fetch();
-        dumpData($result);
-        die();
+        return $result->count == 1 ? true : false;
     }
 
     function isPasswordMatchForUserName($userName, $password) {
