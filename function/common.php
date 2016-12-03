@@ -6,8 +6,12 @@ function isFirstTimeAtSite() {
     }
 }
 
-function setSuccessConfirmationMessage($message = "Successfully Submitted Form") {
-    $_session['confirmation'] = array("type"=>"success", "message"=>$message);
+function setSuccessMessage($message = "Successfully Submitted Form") {
+    $_SESSION['confirmation'] = array("type"=>"success", "message"=>$message);
+}
+
+function setFailureMessage($message = "Failed Form Submission") {
+    $_SESSION['confirmation'] = array("type" => "warning", "message" => $message);
 }
 
 function isProduction() {
@@ -19,7 +23,7 @@ function getTimeStamp() {
 }
 
 function getURL() {
-    
+
 }
 
 function isLoggedIn() {
