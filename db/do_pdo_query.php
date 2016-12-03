@@ -1,5 +1,4 @@
 <?php
-
 function dbConnection() {
     $hostname = dbHostName;
     $username = dbUserName;
@@ -29,7 +28,7 @@ if (!function_exists('do_pdo_query')) {
         }
 
         if (empty($query_params)) {
-            $stmt = $db->query($query); 
+            $stmt = $db->query($query);
             if (!$stmt) {
                 $log_msg = 'problem executing query "' . $query . '".';
                 die($log_msg);
@@ -96,4 +95,3 @@ function containsWords($str, $word) {
 }
 
 ?>
-
