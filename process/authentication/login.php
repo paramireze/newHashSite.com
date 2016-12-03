@@ -7,17 +7,17 @@ $userName = $_POST['userName'];
 $password = $_POST['password'];
 
 if (empty($userName) || empty($password)) {
-    exit('missing username or password');
+    setFailureMessage("Missing Username or Password");
+    header('location: ' . SITE_URL . 'auth/login');
 }
 
-$userId = isUserNameMatch($userName);
-$result = isValidCredentials($userId, $password);
-
-if (empty($userId) || empty($result)) {
+$userId = getIdForUserName($userName);
+if (empty($userId) || !isValidCredentials($userId, $password)) {
     setFailureMessage("Login Unsuccessful");
     header('location: ' . SITE_URL . 'auth/login');
 }
 
-setSuccessMessage();
-header('location: ' . $_SESSION['redirect']);
+session_regenerate_id();
+setSuccessMessage('Welcome ');
+
 ?>

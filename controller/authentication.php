@@ -12,7 +12,6 @@
                 break;
 
             case "login":
-                $_SESSION['redirect'] = isset($_SERVER['REQUEST_URI']) ?: SITE_URL . 'home';
                 $page_content = 'view/login/inc_loginFormPage.php';
                 include($_SERVER['DOCUMENT_ROOT'] . '/layout/master.php');
                 break;
@@ -24,13 +23,12 @@
                 break;
 
             case "authenticate":
+                $redirect = isset($_POST['redirect']) ? $_POST['redirect'] : SITE_URL . 'home';
                 include($_SERVER['DOCUMENT_ROOT'] . '/process/authentication/login.php');
-                $page_content = null;
+                header('location: ' . $redirect);
                 die();
 
         }
-
-        return $page_content;
     }
 
     function setUser($user) {

@@ -8,6 +8,6 @@
     <label for="inputPassword">Password</label>
     <input type="password" class="form-control" id="inputPassword" name="password" placeholder="Password">
   </div>
-
+  <input type="hidden" name="redirect" value="<?php echo $_SERVER['REQUEST_URI'] ?>" />
   <button type="submit" class="btn btn-default">Fuck you, log me in</button>
 </form>
