@@ -26,7 +26,7 @@
                 $redirect = isset($_POST['redirect']) ? $_POST['redirect'] : SITE_URL . 'home';
                 include($_SERVER['DOCUMENT_ROOT'] . '/process/authentication/login.php');
                 header('location: ' . $redirect);
-                die();
+                exit();
 
         }
     }
