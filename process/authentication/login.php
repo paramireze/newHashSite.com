@@ -11,12 +11,13 @@ if (empty($userName) || empty($password)) {
 }
 
 $userId = isUserNameMatch($userName);
+$result = isValidCredentials($userId, $password);
 
-if (!empty($userId)) {
-    $result = isValidCredentials($userId, $password);
-} else {
+if (empty($userId) || empty($result)) {
     setFailureMessage("Login Unsuccessful");
     header('location: ' . SITE_URL . 'auth/login');
 }
 
+setSuccessMessage();
+header('location: ' . $_SESSION['redirect']);
 ?>

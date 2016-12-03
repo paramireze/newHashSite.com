@@ -12,6 +12,7 @@
                 break;
 
             case "login":
+                $_SESSION['redirect'] = isset($_SERVER['REQUEST_URI']) ?: SITE_URL . 'home';
                 $page_content = 'view/login/inc_loginFormPage.php';
                 include($_SERVER['DOCUMENT_ROOT'] . '/layout/master.php');
                 break;
