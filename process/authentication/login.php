@@ -20,6 +20,8 @@ if (empty($userId) || !isValidCredentials($userId, $password)) {
 
 $user = getUser($userId);
 session_regenerate_id();
-setSuccessMessage('Welcome ');
+
+$_SESSION['user'] = $userId;
+setSuccessMessage('Welcome ' . $user->getDisplayName());
 
 ?>

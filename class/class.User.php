@@ -17,9 +17,8 @@ class User {
         $this->email        = $email;
     }
 
-    public function setPassword($password) {
-        //echo 'hi';
-
+    function getDisplayName() {
+        return $this->firstName . ' ' . $this->lastName;
     }
 
     public function getPassword() {
