@@ -1,4 +1,7 @@
 <?php
+    include $_SERVER['DOCUMENT_ROOT'] . '/db/do_pdo_query.php';
+    include $_SERVER['DOCUMENT_ROOT'] . '/function/common.php';
+
     $userName = $_POST['userName'];
     $password = $_POST['password'];
 
@@ -6,14 +9,17 @@
         exit('missing username or password');
     }
 
-    dumpData($_POST);
     $userId = isUserNameMatch($userName);
+
 
     if (!empty($userId)) {
         $result = isValidCredentials($userId, $password);
-        echo $result == true ? 'Success' : 'failed!';
+        //echo $result == true ? 'Success' : 'failed!';
     } else {
-        echo 'failed.';
+        
+        header('location: ' . SITE_URL . 'auth/login');
     }
+
+
 
 ?>

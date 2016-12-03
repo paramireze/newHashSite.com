@@ -1,7 +1,7 @@
 <?php
 
 // get the db connection and functions
-include $_SERVER['DOCUMENT_ROOT'] . '/db/function.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/db/do_pdo_query.php';
 
 
 include $_SERVER['DOCUMENT_ROOT'] . '/db/function/user_functions.php';
@@ -33,7 +33,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/function/urlLinks.php';
 <?php
 
     include $_SERVER['DOCUMENT_ROOT'] . '/layout/inc_topNavigation.php';
-    //include $_SERVER['DOCUMENT_ROOT'] . '/layout/inc_notification.php';
+    include $_SERVER['DOCUMENT_ROOT'] . '/layout/inc_notification.php';
     include $_SERVER['DOCUMENT_ROOT'] . '/' . $page_content;
 
     if ($params[0] == "home") {

@@ -27,6 +27,7 @@ switch($params[0])  {
 
     case '404':
         $page_content = 'view/404.php';
+        include($_SERVER['DOCUMENT_ROOT'] . '/layout/master.php');
         break;
 
     default:
@@ -34,12 +35,6 @@ switch($params[0])  {
         exit();
 }
 
-// 
-if (!empty($page_content)) {
-    include($_SERVER['DOCUMENT_ROOT'] . '/layout/master.php');
-} else {
-    echo 'failed conditional';
-}
 
 /* example code for grabbing a id
 if (isset($params[1]) && ctype_digit($params[1])) {

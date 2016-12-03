@@ -8,19 +8,24 @@
         switch($params[1]) {
             case null:
                 $page_content = 'view/login/inc_loginFormPage.php';
+                include($_SERVER['DOCUMENT_ROOT'] . '/layout/master.php');
                 break;
 
             case "login":
                 $page_content = 'view/login/inc_loginFormPage.php';
+                include($_SERVER['DOCUMENT_ROOT'] . '/layout/master.php');
                 break;
 
             case "logout":
                 unsetUser();
                 $page_content = home($params);
+                include($_SERVER['DOCUMENT_ROOT'] . '/layout/master.php');
                 break;
 
             case "authenticate":
-                $page_content = 'process/authentication/login.php';
+                include($_SERVER['DOCUMENT_ROOT'] . '/process/authentication/login.php');
+                $page_content = null;
+                die();
 
         }
 

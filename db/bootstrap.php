@@ -20,7 +20,6 @@ function dropTable() {
 }
 
 function addUsers() {
-
     $people = populatePeople();
     addPeopleToDB($people);
 }
