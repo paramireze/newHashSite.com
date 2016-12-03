@@ -3,8 +3,8 @@
     //access the database queries
     include $_SERVER['DOCUMENT_ROOT'] . '/db/query/authenticate.php';
 
-    function isUserNameMatch($userName) {
-        return is_user_name_match($userName);
+    function getIdForUserName($userName) {
+        return get_id_for_username($userName);
     }
 
     function isValidCredentials($id, $password) {

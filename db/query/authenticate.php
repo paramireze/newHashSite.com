@@ -2,7 +2,7 @@
 /*
  *
  */
-function is_user_name_match($userName) {
+function get_id_for_username($userName) {
     $databaseConnection = dbConnection();
 
     $sql['query'] = "SELECT id FROM user where username = :userName";
