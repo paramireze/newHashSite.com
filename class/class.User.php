@@ -10,14 +10,11 @@ class User {
     public $enabled;
 
     public function __construct($password, $userName, $firstName, $lastName, $email) {
-        $hashedPassword = hash('sha512',$password);
-        $this->password     = $hashedPassword;
+        $this->password     = $password;
         $this->userName     = $userName;
         $this->firstName    = $firstName;
         $this->lastName     = $lastName;
         $this->email        = $email;
-        $this->created      = getTimeStamp();
-        $this->enabled      = true;
     }
 
     public function setPassword($password) {
@@ -31,6 +28,10 @@ class User {
 
     public function getId() {
         return $this->id;
+    }
+
+    public function setId($id) {
+        $this->id = $id;
     }
 }
 

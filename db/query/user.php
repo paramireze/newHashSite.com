@@ -42,13 +42,16 @@ function get_user_by_name($firstName, $lastName) {
 function create_user($user) {
     $databaseConnection = dbConnection();
     $sql['query'] = "insert into user (id, password, firstName, lastName, userName, email, created, enabled) values (default, :password, :firstName, :lastName, :userName, :email, :created, :enabled)";
-    $sql['params'][':password']     = $user->getPassword();
+    $hashedPassword = hash('sha512',$user->getPassword());
+    $created      = getTimeStamp();
+
+    $sql['params'][':password']     = $hashedPassword;
     $sql['params'][':firstName']    = $user->firstName;
     $sql['params'][':lastName']     = $user->lastName;
     $sql['params'][':userName']     = $user->userName;
     $sql['params'][':email']        = $user->email;
-    $sql['params'][':created']      = $user->created;
-    $sql['params'][':enabled']      = $user->enabled;
+    $sql['params'][':created']      = $created;
+    $sql['params'][':enabled']      = true;
     return do_pdo_query($databaseConnection, $sql['query'], $sql['params']);
 }
 

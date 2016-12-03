@@ -8,7 +8,20 @@ function getUsers() {
 function getUser($id) {
     $result = get_user($id);
 
-    return !empty($result) ? true : false;
+    if (!$result) {
+        exit('bad id');
+    }
+
+    $result = $result->fetch();
+    
+    $user = new User($result->password, $result->userName, $result->firstName, $result->lastName, $result->email);
+
+    //set non-constructor properties
+    $user->created = $result->created;
+    $user->enabled = $result->enabled;
+    $user->setId($id);
+
+    return $user;
 }
 
 function getUserByName($firstName, $lastName) {

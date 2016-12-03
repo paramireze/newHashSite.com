@@ -2,6 +2,7 @@
 
 include $_SERVER['DOCUMENT_ROOT'] . '/db/do_pdo_query.php';
 include $_SERVER['DOCUMENT_ROOT'] . '/function/common.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/db/function/user_functions.php';
 
 $userName = $_POST['userName'];
 $password = $_POST['password'];
@@ -17,6 +18,7 @@ if (empty($userId) || !isValidCredentials($userId, $password)) {
     header('location: ' . SITE_URL . 'auth/login');
 }
 
+$user = getUser($userId);
 session_regenerate_id();
 setSuccessMessage('Welcome ');
 
