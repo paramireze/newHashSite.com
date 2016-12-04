@@ -10,19 +10,19 @@ include $_SERVER['DOCUMENT_ROOT'] . '/controller/registeredControllers.php';
 // call controller functions
 switch($params[0])  {
     case "":
-        $page_content = home($params);
+        home($params);
         break;
 
     case "home":
-        $page_content = home($params);
+        home($params);
         break;
 
     case 'auth':
-        $page_content = auth($params);
+        auth($params);
         break;
 
     case 'profile':
-        $page_content = profile($params);
+        profile($params);
         break;
 
     case '404':
