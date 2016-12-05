@@ -1,4 +1,6 @@
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/config/testConfig.php';
+<?php
+include $_SERVER['DOCUMENT_ROOT'] . '/config/testConfig.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/function/common.php';
 
 // get the parameters in url string
 $params = explode('/', rtrim($_SERVER['REQUEST_URI'], '/'));

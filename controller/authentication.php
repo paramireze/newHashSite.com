@@ -1,6 +1,4 @@
 <?php
-
-    // include database accessor functions
     include $_SERVER['DOCUMENT_ROOT'] . '/db/function/auth_functions.php';
 
     function auth($params) {
@@ -12,14 +10,18 @@
                 break;
 
             case "login":
+                if (isLoggedIn()) {
+                    header('location: ' . SITE_URL . 'home');
+                    exit();
+                }
+
                 $page_content = 'view/login/inc_loginFormPage.php';
                 include($_SERVER['DOCUMENT_ROOT'] . '/layout/master.php');
                 break;
 
             case "logout":
-                unsetUser();
-                $page_content = home($params);
-                include($_SERVER['DOCUMENT_ROOT'] . '/layout/master.php');
+                include($_SERVER['DOCUMENT_ROOT'] . '/process/authentication/logout.php');
+                header('location: ' . SITE_URL . 'home');
                 break;
 
             case "authenticate":

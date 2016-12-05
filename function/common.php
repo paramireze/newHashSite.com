@@ -22,10 +22,6 @@ function getTimeStamp() {
     return date("Y-m-d H:i:s");
 }
 
-function getURL() {
-
-}
-
 function isLoggedIn() {
     return isset($_SESSION['user']) && !empty($_SESSION['user']);
 }
@@ -38,7 +34,6 @@ function dumpData($data, $die = false) {
     if ($die) {
         die();
     }
-
 }
 
 function MyAutoload($className){
