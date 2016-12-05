@@ -1,7 +1,6 @@
 <?php
 
 include $_SERVER['DOCUMENT_ROOT'] . '/db/do_pdo_query.php';
-include $_SERVER['DOCUMENT_ROOT'] . '/function/common.php';
 include $_SERVER['DOCUMENT_ROOT'] . '/db/function/user_functions.php';
 
 $userName = $_POST['userName'];
