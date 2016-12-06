@@ -44,9 +44,10 @@ function populatePeople() {
 
 function populateRoles() {
     $adminRole  = new Role('user');
-    $userRole = new Role('admin');
+    $userRole   = new Role('admin');
+    $hashRole   = new Role('hasher');
 
-    return array($adminRole, $userRole);
+    return array($adminRole, $userRole, $hashRole);
 }
 
 ?>
