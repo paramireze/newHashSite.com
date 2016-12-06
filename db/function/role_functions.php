@@ -5,6 +5,11 @@ function getRole($role) {
     return get_role($role);
 }
 
+function getRoles() {
+    $result = get_roles();
+    return $result->fetchAll();
+}
+
 function getRoleByAuthority($authority) {
     $result = get_role_by_authority($authority);
     return $result->fetch();

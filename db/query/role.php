@@ -1,4 +1,14 @@
 <?php
+/*
+ *
+ */
+function get_roles() {
+    $databaseConnection = dbConnection();
+
+    $sql['query'] = "SELECT * FROM role";
+    $sql['params'] = null;
+    return do_pdo_query($databaseConnection, $sql['query'], $sql['params']);
+}
 
 /*
  *
