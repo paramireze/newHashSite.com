@@ -57,7 +57,13 @@ function create_role($role) {
 
     $sql['params'][':authority']    = $role->authority;
 
-    return do_pdo_query($databaseConnection, $sql['query'], $sql['params']);
+    $result = do_pdo_query($databaseConnection, $sql['query'], $sql['params']);
+    
+    if ($result) {
+        return $databaseConnection->lastInsertId();
+    } else {
+        return null;
+    }
 }
 
 /*

@@ -8,6 +8,8 @@ class Role {
     public function __construct($authority) {
         $this->authority     = $authority;
     }
-}
 
-?>
+    public function getId() {
+        return $this->id;
+    }
+}

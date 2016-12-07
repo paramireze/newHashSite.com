@@ -50,7 +50,12 @@ function create_user($user) {
     $sql['params'][':userName']     = $user->userName;
     $sql['params'][':email']        = $user->email;
     $sql['params'][':enabled']      = true;
-    return do_pdo_query($databaseConnection, $sql['query'], $sql['params']);
+    $result = do_pdo_query($databaseConnection, $sql['query'], $sql['params']);
+    if ($result) {
+        return $databaseConnection->lastInsertId();
+    } else {
+        return null;
+    }
 }
 
 /*

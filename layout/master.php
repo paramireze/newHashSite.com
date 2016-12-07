@@ -6,6 +6,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/db/do_pdo_query.php';
 
 include $_SERVER['DOCUMENT_ROOT'] . '/db/function/user_functions.php';
 include $_SERVER['DOCUMENT_ROOT'] . '/db/function/role_functions.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/db/function/user_role_functions.php';
 include $_SERVER['DOCUMENT_ROOT'] . '/db/function/database_logs_functions.php';
 
 // site wide functions
