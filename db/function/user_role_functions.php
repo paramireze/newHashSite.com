@@ -17,9 +17,6 @@ function getUserRole($userId, $roleId) {
 }
 
 function createUserRole($userId, $roleId) {
-    echo '<pre>';
-    echo 'user id: ' . $userId . ', role id: ' . $roleId . '<br />';
-    echo '</pre>';
         $userRole = get_user_role($userId, $roleId);
         dumpData($userRole);
         return get_user_role($userId, $roleId) ? create_user_role($userId, $roleId) : null;
