@@ -1,5 +1,5 @@
 <?php
-include $_SERVER['DOCUMENT_ROOT'] . '/config/testConfig.php';
+include '/home/paramireze/phpfunConfig.php';
 include $_SERVER['DOCUMENT_ROOT'] . '/function/common.php';
 
 // get the parameters in url string
