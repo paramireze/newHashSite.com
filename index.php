@@ -19,6 +19,10 @@ switch($params[0])  {
         home($params);
         break;
 
+    case "logs":
+        logs($params);
+        break;
+
     case 'auth':
         auth($params);
         break;
