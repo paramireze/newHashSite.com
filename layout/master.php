@@ -37,9 +37,9 @@ include $_SERVER['DOCUMENT_ROOT'] . '/function/urlLinks.php';
     include $_SERVER['DOCUMENT_ROOT'] . '/layout/inc_notification.php';
     include $_SERVER['DOCUMENT_ROOT'] . '/' . $page_content;
 
-    if ($params[0] == "home") {
+    //if ($params[0] == "home") {
         include $_SERVER['DOCUMENT_ROOT'] . '/layout/inc_dataDump.php';
-    }
+    //}
 ?>
 
 </body>

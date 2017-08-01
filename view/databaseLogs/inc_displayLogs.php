@@ -1,4 +1,5 @@
 <?php
+$dbLogs = getAllDatabaseLogs();
 
 echo "<div class='table-responsive'><table class='table table-condensed table-striped'>
         <tr>
